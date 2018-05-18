@@ -1,0 +1,19 @@
+{
+  "name": "nodejs-hello",
+  "version": "0.0.0",
+  "description": "hello nodejs",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "node test/unit/hello.js",
+    "test:integration": "node test/integration/hello.js"
+  },
+  "author": "",
+  "license": "",
+  "dependencies": {
+    "koa": "^2.5.0"
+  },
+  "devDependencies": {
+    "supertest": "^3.0.0",
+    "tape": "^4.9.0"
+  }
+}
