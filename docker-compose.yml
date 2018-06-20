@@ -1,0 +1,28 @@
+version: '2.3'
+services:
+
+  dind:
+    image: docker:stable-dind
+    privileged: true
+    expose:
+      - 2375
+      - 2376
+
+  build-local:
+    build:
+      context: ./docker-build
+    volumes:
+      - .:/work
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      IMAGE_PREFIX: 7val/
+
+  build-remote:
+    build:
+      context: ./docker-build
+    environment:
+      DOCKER_HOST: tcp://dind:2375
+    volumes:
+      - .:/work
+    depends_on:
+      - dind

@@ -1,0 +1,20 @@
+version: '2.3'
+
+services:
+
+  hello:
+    build:
+      context: .
+      target: release
+    ports:
+      - 3000:3000
+
+  hello-test:
+    build:
+      context: .
+      target: build
+    environment:
+      API_ENDPOINT: http://hello:3000
+    depends_on:
+      - hello
+    command: yarn test:integration
