@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# $IMAGE_NAME var is injected into the build so the tag is correct.
+
+SLOPPY_CLI_VERSION=${SLOPPY_CLI_VERSION:-v1.12.0}
+
+docker build \
+  --build-arg SLOPPY_CLI_VERSION="${SLOPPY_CLI_VERSION}" \
+  --no-cache \
+  --pull \
+  --build-arg BUILD_DATE=`date -u +"%Y-%m-%dT%H:%M:%SZ"` \
+  --build-arg VCS_REF=`git rev-parse --short HEAD` \
+  -t $IMAGE_NAME .
