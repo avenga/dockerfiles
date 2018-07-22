@@ -1,5 +1,8 @@
 # 7val/sloppy
 
+[![](https://images.microbadger.com/badges/image/7val/sloppy.svg)](https://microbadger.com/images/7val/sloppy "Get your own image badge on microbadger.com")
+[![](https://images.microbadger.com/badges/commit/7val/sloppy.svg)](https://microbadger.com/images/7val/sloppy "Get your own commit badge on microbadger.com")
+
 A command line tool for sloppy.io, a container as a service provider.
 
 https://github.com/sloppyio/cli
