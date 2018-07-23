@@ -7,8 +7,8 @@ Expects a `build` stage with `/app/package.json`, `/app/lib` and package depende
 ## Usage
 
 ```Dockerfile
-FROM sevenval/nodejs-javascript-builder:latest AS build
-FROM sevenval/nodejs-javascript-app:latest AS release
+FROM 7val/nodejs-javascript-builder:latest AS build
+FROM 7val/nodejs-javascript-app:latest AS release
 ```
 
 [1]: https://docs.docker.com/develop/develop-images/multistage-build/
