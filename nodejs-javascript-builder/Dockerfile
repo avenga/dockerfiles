@@ -1,4 +1,4 @@
-ARG  IMAGE_PREFIX=""
+ARG  IMAGE_PREFIX="7val/"
 FROM ${IMAGE_PREFIX}nodejs-runner:latest AS release
 RUN apk add --no-cache yarn
 ONBUILD COPY package.json yarn.lock ./
