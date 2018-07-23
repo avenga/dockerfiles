@@ -7,6 +7,6 @@ Opinionated docker image to act as nodejs runtime only.
 As base image for nodejs apps.
 
 ```Dockerfile
-FROM sevenval/nodejs-runner:latest AS release
+FROM 7val/nodejs-runner:latest AS release
 ...
 ```
