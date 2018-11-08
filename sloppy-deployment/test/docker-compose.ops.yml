@@ -1,0 +1,12 @@
+version: '2.3'
+services:
+  deploy-test:
+    build:
+      context: ./deployment
+    env_file:
+      - environments/test/sloppy.env
+      - environments/test/website.env
+    environment:
+      ENVIRONMENT: "test"
+    volumes:
+      - ./environments:/environments
