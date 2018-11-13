@@ -1,0 +1,11 @@
+version: '2'
+
+services:
+
+  hello-world:
+    image: {{.Env.APP_IMAGE}}:{{.Env.APP_VERSION}}
+    ports:
+      - {{.Env.APP_PORT}}:80/tcp
+    labels:
+      io.rancher.container.pull_image: always
+      service: {{.Env.ENVIRONMENT}}/{{.Env.APP_IMAGE}}

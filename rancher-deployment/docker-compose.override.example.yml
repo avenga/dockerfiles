@@ -1,0 +1,10 @@
+version: '2.3'
+services:
+  deploy-test:
+    extends:
+      file: example/docker-compose.ops.yml
+      service: deploy-test
+    env_file:
+      - .env
+    environment:
+      ENVIRONMENT: "rancher-deployment-example"

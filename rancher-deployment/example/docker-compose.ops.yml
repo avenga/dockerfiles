@@ -1,0 +1,14 @@
+version: '2.3'
+services:
+  deploy-test:
+    build:
+      context: ./deployment
+    env_file:
+      - environments/app.default.env
+      - environments/rancher.default.env
+      - environments/test/rancher.env
+      - environments/test/app.env
+    environment:
+      ENVIRONMENT: "test"
+    volumes:
+      - ./environments:/environments
