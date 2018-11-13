@@ -1,0 +1,7 @@
+version: '2'
+
+services:
+
+  hello-world:
+    scale: {{.Env.APP_SCALE}}
+    start_on_create: true

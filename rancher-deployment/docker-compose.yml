@@ -1,0 +1,8 @@
+version: '2.3'
+services:
+  test:
+    extends:
+      file: example/docker-compose.ops.yml
+      service: deploy-test
+    environment:
+      DRY_RUN: "true"
