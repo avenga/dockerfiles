@@ -10,5 +10,5 @@ gomplate -f "/work/${SLOPPY_TEMPLATE_FILE}" \
 if [[ -n "$DRY_RUN" ]]; then
   cat "${SLOPPY_OUTPUT_FILE}"
 else
-  sloppy change $SLOPPY_OUTPUT_FILE
+  sloppy change -f $SLOPPY_OUTPUT_FILE
 fi
