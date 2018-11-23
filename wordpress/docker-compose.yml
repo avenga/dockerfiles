@@ -1,0 +1,17 @@
+version: '2.3'
+services:
+
+  wordpress:
+    extends:
+      file: test/docker-compose.yml
+      service: wordpress
+    build: .
+    ports:
+      - 8008:80
+    depends_on:
+      - mysql
+
+  mysql:
+    extends:
+      file: test/docker-compose.yml
+      service: mysql

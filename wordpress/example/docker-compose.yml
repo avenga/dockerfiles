@@ -1,0 +1,27 @@
+version: '2.3'
+services:
+
+  wordpress:
+    build: .
+    ports:
+      - 8008:80
+    environment:
+      WORDPRESS_TITLE: testblog
+      WORDPRESS_DB_HOST: mysql
+      WORDPRESS_DB_USER: test
+      WORDPRESS_DB_PASSWORD: test123
+      WORDPRESS_DB_NAME: wordpress
+      WORDPRESS_DOMAIN: localhost:8008
+      WORDPRESS_URL: http://localhost:8008
+      WORDPRESS_ADMIN_EMAIL: test@example.com
+      WORDPRESS_ADMIN_PASSWORD: admin123
+
+  mysql:
+    image: mysql:5.7.24
+    environment:
+      MYSQL_ROOT_PASSWORD: verysecret
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: test
+      MYSQL_PASSWORD: test123
+    volumes:
+      - /var/lib/mysql
