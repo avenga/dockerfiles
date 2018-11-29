@@ -1,0 +1,8 @@
+version: '2.3'
+services:
+  test:
+    build: .
+    environment:
+      CI_SERVER_URL: https://gitlab.com
+      REGISTRATION_TOKEN:
+      RUNNER_NAME: 7val/gitlab-runner test
