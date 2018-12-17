@@ -3,7 +3,7 @@ services:
 
   wordpress:
     extends:
-      file: test/docker-compose.yml
+      file: example/docker-compose.yml
       service: wordpress
     build: .
     ports:
@@ -13,5 +13,5 @@ services:
 
   mysql:
     extends:
-      file: test/docker-compose.yml
+      file: example/docker-compose.yml
       service: mysql
