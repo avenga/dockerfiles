@@ -43,8 +43,6 @@ wp core install \
   --admin_email="${WORDPRESS_ADMIN_EMAIL}"
 
 wp option update blogdescription "${WORDPRESS_DESCRIPTION}"
-wp language core install de_DE --activate
-wp user meta update admin locale en_US
 
 /bin/bash -c "/setup.sh"
 
