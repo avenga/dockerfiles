@@ -23,12 +23,12 @@ else
     . ./setup-volumes.sh
   fi
   echo "Upgrading $ENVIRONMENT ..."
-  rancher up -f "${DOCKER_COMPOSE_OUTPUT_FILE}" --rancher-file "${RANCHER_COMPOSE_OUTPUT_FILE}" --upgrade --pull -d --force-upgrade --stack "$STACK"
+  rancher up -f "${DOCKER_COMPOSE_OUTPUT_FILE}" --rancher-file "${RANCHER_COMPOSE_OUTPUT_FILE}" --upgrade --pull -d --force-upgrade --stack "$STACK" $SERVICE
   rancher --wait-state upgraded wait
   rancher --wait-state healthy wait
 
   echo "Confirming upgrade for $ENVIRONMENT ..."
-  rancher up -f "${DOCKER_COMPOSE_OUTPUT_FILE}" --rancher-file "${RANCHER_COMPOSE_OUTPUT_FILE}" --confirm-upgrade -d --stack "$STACK"
+  rancher up -f "${DOCKER_COMPOSE_OUTPUT_FILE}" --rancher-file "${RANCHER_COMPOSE_OUTPUT_FILE}" --confirm-upgrade -d --stack "$STACK" $SERVICE
   rancher --wait-state active wait
   rancher --wait-state healthy wait
 fi

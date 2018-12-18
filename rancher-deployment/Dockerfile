@@ -16,6 +16,8 @@ ENV DOCKER_COMPOSE_TEMPLATE_FILE=${DOCKER_COMPOSE_TEMPLATE_FILE}
 ENV RANCHER_COMPOSE_TEMPLATE_FILE=${RANCHER_COMPOSE_TEMPLATE_FILE}
 # set to anything but not empty to setup volumes
 ENV SETUP_VOLUMES=""
+# Optionally deploy specific service:
+ENV SERVICE=""
 
 VOLUME /environments
 WORKDIR /work
