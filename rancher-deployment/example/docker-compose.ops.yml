@@ -10,5 +10,7 @@ services:
       - environments/test/app.env
     environment:
       ENVIRONMENT: "test"
+      # If not set all the services will be deployed:
+      SERVICE: "hello-world"
     volumes:
       - ./environments:/environments
