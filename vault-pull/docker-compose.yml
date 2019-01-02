@@ -1,0 +1,33 @@
+version: '2.3'
+services:
+
+  vault:
+    image: vault:1.0.1
+    ports:
+      - 8200:8200
+    environment:
+      VAULT_DEV_ROOT_TOKEN_ID: myroot
+      VAULT_DEV_LISTEN_ADDRESS: 0.0.0.0:8200
+
+  push-secrets:
+    image: 7val/vault-push
+    depends_on:
+      - vault
+    environment:
+      - VAULT_ADDR=http://vault:8200/
+      - VAULT_TOKEN=myroot
+      - PROJECT=project1
+      - SECRETS_FILE=example.secrets.env
+    volumes:
+      - ./example/environments:/environments
+
+  example:
+    build: .
+    depends_on:
+      - push-secrets
+    environment:
+      - VAULT_ADDR=http://vault:8200/
+      - VAULT_TOKEN=myroot
+      - PROJECT=project1
+    volumes:
+      - ./example/environments:/environments
