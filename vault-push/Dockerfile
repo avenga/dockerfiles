@@ -6,4 +6,5 @@ ENV SECRETS_FILE="secrets.env"
 WORKDIR /work
 RUN apk --no-cache add bash
 COPY entrypoint.sh ./
+RUN vault --version
 ENTRYPOINT ["/bin/bash", "entrypoint.sh"]
