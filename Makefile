@@ -1,11 +1,20 @@
 .PHONY: build
 
 IMAGE_PREFIX ?= 7val/
-IMAGE ?= $(shell git diff --name-only @~..@ | sort -u | awk 'BEGIN {FS="/"} {print $$1}' | uniq)
+IMAGE ?= $(shell \
+	git diff --name-only master | \
+	sort -u | \
+	awk 'BEGIN {FS="/"} {print $$1}' | \
+	uniq | \
+	xargs -I % find . -type d -name % -exec basename {} \; \
+)
 IMAGE_TAG ?= latest
 
 build:
-	@if [ -d "$(IMAGE)" ]; then docker-compose run --rm -e IMAGE_PREFIX=$(IMAGE_PREFIX) -e IMAGE=$(IMAGE) build-local; fi
+	docker-compose run --rm -e IMAGE_PREFIX="$(IMAGE_PREFIX)" -e IMAGE="$(IMAGE)" build-local
 
 push:
-	docker push $(IMAGE_PREFIX)$(IMAGE):$(IMAGE_TAG)
+	docker-compose run --rm -e IMAGE_PREFIX="$(IMAGE_PREFIX)" -e IMAGE="$(IMAGE)" -e IMAGE_TAG="$(IMAGE_TAG)" push-images
+
+build-info:
+	@echo "$(IMAGE)" | tr " " "\n"
