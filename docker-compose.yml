@@ -24,3 +24,9 @@ services:
       - .:/work
     depends_on:
       - dind
+
+  push-images:
+    build:
+      context: ./docker-push
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
