@@ -1,0 +1,16 @@
+language: minimal
+
+services:
+  - docker
+
+before_script:
+  - git fetch origin master
+
+script:
+  - make build
+
+deploy:
+  provider: script
+  script: make push
+  on:
+    branch: master

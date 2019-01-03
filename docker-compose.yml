@@ -1,32 +1,18 @@
 version: '2.3'
 services:
 
-  dind:
-    image: docker:stable-dind
-    privileged: true
-    expose:
-      - 2375
-      - 2376
-
-  build-local:
+  build-images:
     build:
       context: ./docker-build
     volumes:
       - .:/work
       - /var/run/docker.sock:/var/run/docker.sock
 
-  build-remote:
-    build:
-      context: ./docker-build
-    environment:
-      DOCKER_HOST: tcp://dind:2375
-    volumes:
-      - .:/work
-    depends_on:
-      - dind
-
   push-images:
     build:
       context: ./docker-push
+    environment:
+      - CI_REGISTRY_USER
+      - CI_REGISTRY_PASSWORD
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
