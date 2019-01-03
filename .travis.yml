@@ -3,14 +3,19 @@ language: minimal
 services:
   - docker
 
+install: true
+
 before_script:
+  # Fetch master to decide what needs to be rebuilt:
   - git fetch origin master
 
-script:
-  - make build
+# build docker images:
+script: make build
 
 deploy:
+  skip_cleanup: true
   provider: script
+  # push docker images to registry:
   script: make push
   on:
     branch: master
