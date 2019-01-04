@@ -3,18 +3,14 @@
 Public Sevenval Dockerfiles intended to serve as base images for our projects.
 Opinionated conventions and best practices.
 
-## Build docker image with docker in docker
+## Build docker image
 
-Local host:
 ```bash
-docker-compose run --rm -e IMAGE=<dirname> build-local
-```
-e.g.
-```bash
-docker-compose run --rm -e IMAGE=nodejs-javascript-hello build-local
+make build -e IMAGE=<dirname>
 ```
 
-Remote host:
+## Push docker image
+
 ```bash
-docker-compose run --rm -e IMAGE=<dirname> build-remote
+make push -e IMAGE=<dirname>
 ```
