@@ -1,0 +1,15 @@
+version: '2.3'
+services:
+  example:
+    build:
+      context: .
+    volumes:
+      - ./example:/work
+      - /var/run/docker.sock:/var/run/docker.sock
+      # Pass .git infos to container:
+      - ../.git:/work/.git
+    environment:
+      - IMAGES=hello-world
+      - LABEL_VENDOR=Example Inc.
+      - LABEL_VCS_URL=https://github.com/example/hello-world
+      - IMAGE_PREFIX=example/

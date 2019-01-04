@@ -7,15 +7,12 @@ install: true
 
 before_script:
   # Fetch master to decide what needs to be rebuilt:
-  - git fetch origin master
+  - git remote set-branches --add origin master
+  - git fetch
+  - make build-info
 
-# build docker images:
-script: make build
-
-deploy:
-  skip_cleanup: true
-  provider: script
-  # push docker images to registry:
-  script: make push
-  on:
-    branch: master
+script:
+  # build docker images:
+  - make build
+  # push docker images to registry if master branch:
+  - make push -e CURRENT_BRANCH="$TRAVIS_BRANCH" -e ONLY_BRANCH="master"
