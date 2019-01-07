@@ -6,6 +6,12 @@ services:
       context: ./docker-build
     env_file:
       - ./defaults.env
+    environment:
+      - DRY_RUN
+      - GIT_DIFF
+      - IMAGES
+      - CACHE
+      - NO_PULL
     volumes:
       - .:/work
       - /var/run/docker.sock:/var/run/docker.sock
@@ -14,8 +20,9 @@ services:
     build:
       context: ./docker-push
     environment:
-      - CI_REGISTRY_USER
       - CI_REGISTRY_PASSWORD
+      - CI_REGISTRY_USER
+      - IMAGES
     volumes:
       - .git:/work/.git
       - /var/run/docker.sock:/var/run/docker.sock

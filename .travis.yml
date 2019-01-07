@@ -9,7 +9,6 @@ before_script:
   # Fetch master to decide what needs to be rebuilt:
   - git remote set-branches --add origin master
   - git fetch
-  - make build-info
 
 script:
   # build docker images:
