@@ -1,27 +1,24 @@
-FROM docker:18.03.1-ce-git AS release
+FROM koalaman/shellcheck-alpine:v0.6.0 as test
+COPY *.sh ./
+RUN find . -name "*.sh" | xargs shellcheck
 
-# defaults
-ENV WORKDIR=/work
+FROM 7val/docker AS release
+#
+# DEFAULTS
+#
 ENV IMAGE_PREFIX=""
 ENV IMAGES=""
 ENV IMAGE_TAG="latest"
 ENV TARGET="release"
 ENV LABEL_VENDOR=""
 ENV LABEL_VCS_URL=""
-
-WORKDIR ${WORKDIR}
-VOLUME ${WORKDIR}
-
-# Used for testing shell scripts:
-COPY --from=koalaman/shellcheck-alpine:v0.6.0 /bin/shellcheck /bin/shellcheck
+ENV GIT_DIFF="@~..@"
+# set to anything but not empty to list the images that need a rebuild:
+ENV DRY_RUN=""
+# set to anything but not empty to build with cache:
+ENV CACHE=""
+# set to anything but not empty to avoid pulling newer versions:
+ENV NO_PULL=""
 
 COPY run.sh /
-RUN shellcheck /run.sh
-
-COPY install.sh ./
-RUN shellcheck install.sh
-# Inspired by https://github.com/schickling/dockerfiles to reduce image size:
-RUN ./install.sh && rm install.sh
-
-ENTRYPOINT ["bash"]
 CMD ["/run.sh"]
