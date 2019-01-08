@@ -1,5 +1,7 @@
 # Sevenval dockerfiles
 
+[![Build Status](https://travis-ci.org/sevenval/dockerfiles.svg?branch=master)](https://travis-ci.org/sevenval/dockerfiles)
+
 Public Sevenval Dockerfiles intended to serve as base images for our projects.
 
 Opinionated conventions and best practices:
