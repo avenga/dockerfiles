@@ -13,6 +13,12 @@ CHANGES=$(git diff --name-only "$GIT_DIFF" | \
 )
 IMAGES="${IMAGES:-$CHANGES}"
 
+if [[ -z $IMAGES ]]
+then
+	echo "Nothing to build."
+	exit 0
+fi
+
 if [[ -n "$DRY_RUN" ]]; then
   echo "$CHANGES"
   exit 0

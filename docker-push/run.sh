@@ -8,6 +8,12 @@ CHANGES=$(git diff --name-only "$GIT_DIFF" | \
 )
 IMAGES="${IMAGES:-$CHANGES}"
 
+if [[ -z $IMAGES ]]
+then
+	echo "Nothing to push."
+	exit 0
+fi
+
 # only push images if specific branch
 if [[ "$CURRENT_BRANCH" == "$ONLY_BRANCH" ]]
 then

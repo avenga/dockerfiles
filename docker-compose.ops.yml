@@ -8,7 +8,6 @@ services:
       - ./defaults.env
     environment:
       - DRY_RUN
-      - GIT_DIFF
       - IMAGES
       - CACHE
       - NO_PULL
