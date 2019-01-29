@@ -1,4 +1,4 @@
-.PHONY: build
+.PHONY: build push
 
 CI_REGISTRY ?= docker.io
 IMAGE_PREFIX ?= $(CI_REGISTRY)/7val/
