@@ -23,7 +23,14 @@ RUN ln -sf /var/files/themes/<your-theme> /usr/src/wordpress/wp-content/themes/<
 It will copy your `.htaccess` file and your `setup.sh` file in the docker image
 when you build it. In your `setup.sh` you can use `wp` CLI to install other plugins/themes for example.
 
+### Configuration
+
 Following environment variables are available:
+
+* `WORDPRESS_PLUGIN_LIST`: A space seperated list of plugins that should be
+  installed. Default: empty
+* `WORDPRESS_THEME_LIST`: A spaces seperated list of themes that should be
+  installed. Default: empty
 
 ```bash
 # General:
@@ -57,6 +64,7 @@ WORDPRESS_SECURE_AUTH_SALT
 WORDPRESS_LOGGED_IN_SALT
 WORDPRESS_NONCE_SALT
 
+# FIXME What is the meaning of those two vars?
 WORDPRESS_OVERWRITE="false"
 # refresh only, not restarting apache if set to "true"
 WORDPRESS_REFRESH_ONLY="false"
