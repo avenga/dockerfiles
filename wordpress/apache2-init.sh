@@ -16,16 +16,16 @@ WORDPRESS_PLUGIN_LIST="${WORDPRESS_PLUGIN_LIST:-""}"
 # $0
 function wp_theme_install () {
     for theme in $WORDPRESS_THEME_LIST ; do
-        if wp theme is-installed "$theme" ; then  wp theme install "$theme" ; fi
-        if wp theme is-active "$theme" ; then wp theme activate "$theme" ; fi
+        if ! wp theme is-installed "$theme" ; then  wp theme install "$theme" ; fi
+        if ! wp theme is-active "$theme" ; then wp theme activate "$theme" ; fi
     done
 }
 # Install WP plugins from ENV var WORDPRESS_PLUGIN_LIST
 # $0
 function wp_plugin_install () {
     for plugin in $WORDPRESS_PLUGIN_LIST ; do
-        if wp plugin is-installed "$plugin" ; then  wp plugin install "$plugin" ; fi
-        if wp plugin is-active "$plugin" ; then wp plugin activate "$plugin" ; fi
+        if ! wp plugin is-installed "$plugin" ; then  wp plugin install "$plugin" ; fi
+        if ! wp plugin is-active "$plugin" ; then wp plugin activate "$plugin" ; fi
     done
 }
 
