@@ -64,10 +64,6 @@ WORDPRESS_SECURE_AUTH_SALT
 WORDPRESS_LOGGED_IN_SALT
 WORDPRESS_NONCE_SALT
 
-# FIXME What is the meaning of those two vars?
-WORDPRESS_OVERWRITE="false"
-# refresh only, not restarting apache if set to "true"
-WORDPRESS_REFRESH_ONLY="false"
 ```
 
 Check the `example` dir how to do it.

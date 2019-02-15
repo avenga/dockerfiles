@@ -1,10 +1,12 @@
 #!/bin/bash
 
+# BEWARE: WORDPRESS_* variables containing secrets, e.g. WORDPRESS_DB_PASSWORD,
+# are removed from the ENV by docker-entrypoint.sh. The complete list can be
+# found there.
+
 set -eux
 
 URL=${WORDPRESS_DOMAIN:-localhost}
-OVERWRITE=${WORDPRESS_OVERWRITE:-"false"}
-REFRESH_ONLY=${WORDPRESS_REFRESH_ONLY:-"false"}
 # Defaults for optional fields:
 WORDPRESS_TITLE=${WORDPRESS_TITLE:-""}
 WORDPRESS_DESCRIPTION=${WORDPRESS_DESCRIPTION:-""}
@@ -29,28 +31,11 @@ function wp_plugin_install () {
     done
 }
 
-# test first if WordPress is already installed
-# if so, skip everything else
-# FIXME This is quite confusing. The code should be cleaned up.
+# Test first if WordPress is already installed. If so, skip everything else
 if wp core is-installed ; then
   /bin/bash -c "/setup.sh"
-  if [ "$OVERWRITE" = "true" ] ; then
-    if [ "$REFRESH_ONLY" = "true" ] ; then
-      echo 'refresh only, not starting apache (again)'
-    fi
-    if [ "$REFRESH_ONLY" = "false" ] ; then
-      echo 'starting apache in background'
-      apache2-foreground &
-    fi
-    echo 'overwriting existing content'
-    if [ "$REFRESH_ONLY" = "false" ] ; then
-      echo 'done overwriting, waiting for apache'
-      wait
-      echo 'wait exited, lets quit'
-    fi
-    exit
-  fi
   echo 'wp is already installed, starting apache'
+  # exec is used in apache2-foreground, so nothing else to do here
   apache2-foreground
 fi
 
@@ -75,5 +60,6 @@ wp option update blogdescription "${WORDPRESS_DESCRIPTION}"
 
 /bin/bash -c "/setup.sh"
 
+# exec is used in apache2-foreground, so nothing else to do here
 # call original command
 apache2-foreground
