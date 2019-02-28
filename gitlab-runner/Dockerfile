@@ -1,5 +1,5 @@
 ARG GITLAB_RUNNER_IMAGE_TAG=alpine
-FROM gitlab/gitlab-runner:${GITLAB_RUNNER_IMAGE_TAG}
+FROM gitlab/gitlab-runner:${GITLAB_RUNNER_IMAGE_TAG} AS release
 
 # Defaults:
 ENV RUNNER_LIMIT="1"
