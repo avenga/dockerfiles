@@ -17,7 +17,9 @@ WORDPRESS_PLUGIN_LIST="${WORDPRESS_PLUGIN_LIST:-""}"
 # Install WP themes from ENV var WORDPRESS_THEME_LIST
 # $0
 function wp_theme_install () {
-    for theme in $WORDPRESS_THEME_LIST ; do
+    # make sure spaces work in theme names
+    local IFS=$'\n\t'
+    for theme in ${WORDPRESS_THEME_LIST//,/$'\n'} ; do
         if ! wp theme is-installed "$theme" ; then  wp theme install "$theme" ; fi
         if ! wp theme is-active "$theme" ; then wp theme activate "$theme" ; fi
     done
@@ -25,7 +27,9 @@ function wp_theme_install () {
 # Install WP plugins from ENV var WORDPRESS_PLUGIN_LIST
 # $0
 function wp_plugin_install () {
-    for plugin in $WORDPRESS_PLUGIN_LIST ; do
+    # make sure spaces work in plugin names
+    local IFS=$'\n\t'
+    for plugin in ${WORDPRESS_PLUGIN_LIST//,/$'\n'} ; do
         if ! wp plugin is-installed "$plugin" ; then  wp plugin install "$plugin" ; fi
         if ! wp plugin is-active "$plugin" ; then wp plugin activate "$plugin" ; fi
     done
@@ -33,11 +37,13 @@ function wp_plugin_install () {
 
 # Test first if WordPress is already installed. If so, skip everything else
 if wp core is-installed ; then
-  /bin/bash -c "/setup.sh"
-  echo 'wp is already installed, starting apache'
-  # exec is used in apache2-foreground, so nothing else to do here
-  apache2-foreground
-fi
+    if [[ -f /setup.sh ]] ; then
+        /bin/bash -c "/setup.sh"
+    fi
+    echo 'wp is already installed, starting apache'
+    # exec is used in apache2-foreground, so nothing else to do here
+    apache2-foreground
+    fi
 
 # Install wordpress
 wp core install \
@@ -58,7 +64,9 @@ fi
 
 wp option update blogdescription "${WORDPRESS_DESCRIPTION}"
 
-/bin/bash -c "/setup.sh"
+if [[ -f /setup.sh ]] ; then
+    /bin/bash -c "/setup.sh"
+fi
 
 # exec is used in apache2-foreground, so nothing else to do here
 # call original command

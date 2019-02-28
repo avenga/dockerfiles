@@ -27,9 +27,9 @@ when you build it. In your `setup.sh` you can use `wp` CLI to install other plug
 
 Following environment variables are available:
 
-* `WORDPRESS_PLUGIN_LIST`: A space seperated list of plugins that should be
+* `WORDPRESS_PLUGIN_LIST`: A comma seperated list of plugins that should be
   installed. Default: empty
-* `WORDPRESS_THEME_LIST`: A spaces seperated list of themes that should be
+* `WORDPRESS_THEME_LIST`: A comma seperated list of themes that should be
   installed. Default: empty
 
 ```bash
