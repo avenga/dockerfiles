@@ -2,9 +2,9 @@
   "name": "nodejs-hello",
   "version": "0.0.0",
   "description": "hello nodejs",
-  "main": "lib/index.js",
+  "main": "src/index.js",
   "scripts": {
-    "test": "node test/unit/hello.js",
+    "test:unit": "node test/unit/hello.js",
     "test:integration": "node test/integration/hello.js"
   },
   "author": "",
