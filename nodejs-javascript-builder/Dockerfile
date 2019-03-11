@@ -1,6 +1,9 @@
-ARG  IMAGE_PREFIX="7val/"
+ARG IMAGE_PREFIX="7val/"
 FROM ${IMAGE_PREFIX}nodejs-runner:latest AS release
-RUN apk add --no-cache yarn
+ENV YARN_VERSION="1.15.0"
+RUN wget -O /yarn.js https://github.com/yarnpkg/yarn/releases/download/v${YARN_VERSION}/yarn-${YARN_VERSION}.js
+COPY yarn /usr/bin
+RUN yarn --version
 ONBUILD COPY package.json yarn.lock ./
 ONBUILD RUN yarn install --frozen-lockfile --production=true --modules-folder /prod_node_modules --silent
 ONBUILD RUN yarn install --frozen-lockfile --production=false
