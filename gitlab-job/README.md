@@ -12,4 +12,4 @@ services:
 ```
 See https://docs.gitlab.com/ce/ci/yaml/#image for more infos.
 
-The image contains `make`, `python3` and `docker-compose`.
+The image contains `bash`, `make`, `python3` and `docker-compose`.

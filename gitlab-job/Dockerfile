@@ -1,2 +1,3 @@
 FROM docker:stable-git AS release
-RUN apk add --no-cache make python3 && pip3 install docker-compose
+RUN apk add --quiet --no-progress --no-cache make python3 bash \
+    && pip3 -q install docker-compose
