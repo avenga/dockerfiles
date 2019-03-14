@@ -1,0 +1,9 @@
+version: '2.3'
+services:
+  generate-makefile:
+    build: .
+    volumes:
+      - ./temp:/project
+    environment:
+      - PROJECT=my-test-project
+      - DEFAULT_SERVICE=my-backend

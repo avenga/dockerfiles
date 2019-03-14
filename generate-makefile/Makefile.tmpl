@@ -1,0 +1,46 @@
+.PHONY: help
+
+# Used to export env vars for docker-compose https://docs.docker.com/compose/environment-variables/
+.EXPORT_ALL_VARIABLES:
+
+PROJECT = {{.Env.PROJECT}}
+VERSION ?= $(shell git show --quiet --format="%cd-%h" --date=short)
+ENVIRONMENT ?= {{.Env.DEFAULT_ENVIRONMENT}}
+REGISTRY ?= {{.Env.DEFAULT_DOCKER_REGISTRY}}
+SERVICE ?= {{.Env.DEFAULT_SERVICE}}
+IMAGE ?= ${REGISTRY}/${PROJECT}/${SERVICE}
+
+help: ## Print help
+	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' ${MAKEFILE_LIST} | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
+
+version: ## Print version of app; used for tagging docker images
+	@echo "${VERSION}"
+
+# Executed only when starting `make up` the first time:
+.env:
+	cp .env.example .env
+
+up: .env docker-compose.yml ## Start local dev environment with docker-compose
+	docker-compose -p "${PROJECT}" up --build --force-recreate
+
+down: docker-compose.yml ## Teardown local dev environment with docker-compose
+	docker-compose -p "${PROJECT}" down --volumes --remove-orphans
+
+build: ## Build docker image; e.g. `make build -e SERVICE=backend`
+	@docker build \
+		--force-rm --pull --no-cache \
+		-t ${IMAGE}:${VERSION} \
+		-f services/${SERVICE}/Dockerfile \
+		--target release \
+		services/${SERVICE}
+
+push: ## Push docker image; e.g. `make push -e SERVICE=backend`
+	docker push ${IMAGE}:${VERSION}
+
+deploy: ops/docker-compose.ops.yml ## Deploy to specific environment; e.g. `make deploy -e ENVIRONMENT=development`
+	@docker-compose -p "${PROJECT}_${VERSION}" -f ops/docker-compose.ops.yml build \
+		--force-rm \
+		deploy
+	@docker-compose -p "${PROJECT}_${VERSION}" -f ops/docker-compose.ops.yml run \
+		--rm -T \
+		deploy
