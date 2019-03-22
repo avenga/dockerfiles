@@ -1,4 +1,4 @@
-ARG WORDPRESS_IMAGE_TAG=5.1.1-php7.3-apache
+ARG WORDPRESS_IMAGE_TAG=5-php7.3-apache
 FROM wordpress:${WORDPRESS_IMAGE_TAG} AS release
 
 # Add sudo in order to run wp-cli as the www-data user
