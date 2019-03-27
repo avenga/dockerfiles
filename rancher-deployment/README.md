@@ -15,3 +15,12 @@ Then run:
 ```bash
 docker-compose run deploy-test
 ```
+
+## Usage as Rancher CLI
+
+You can use this image as a replacement for the rancher cli tool.
+E.g.:
+```bash
+docker run -it --rm --entrypoint /usr/bin/rancher -v "$HOME/.rancher":/rancher \
+    7val/rancher-deployment --config /rancher/cli.json <your options>
+```
