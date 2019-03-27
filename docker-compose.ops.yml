@@ -15,6 +15,16 @@ services:
       - .:/work
       - /var/run/docker.sock:/var/run/docker.sock
 
+
+  test-images:
+    build:
+      context: ./docker-test
+    environment:
+      - IMAGES
+    volumes:
+      - .:/work
+      - /var/run/docker.sock:/var/run/docker.sock
+
   push-images:
     build:
       context: ./docker-push

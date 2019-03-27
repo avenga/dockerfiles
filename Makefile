@@ -10,6 +10,21 @@ build:
 		-e IMAGE_PREFIX="$(IMAGE_PREFIX)" \
 		build-images
 
+test:
+	@docker-compose \
+		--log-level ERROR \
+		-f docker-compose.ops.yml \
+		build \
+		--force-rm \
+		test-images
+	@docker-compose \
+		-f docker-compose.ops.yml \
+		--log-level ERROR \
+		run \
+		--rm \
+		-e IMAGE_PREFIX="$(IMAGE_PREFIX)" \
+		test-images
+
 push:
 	@docker-compose -f docker-compose.ops.yml run --rm \
 		-e IMAGE_PREFIX="$(IMAGE_PREFIX)" \
