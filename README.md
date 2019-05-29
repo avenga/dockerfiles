@@ -37,7 +37,7 @@ make push
 
 Push specific docker images:
 ```bash
-make build -e IMAGES="wordpress"
+make push -e IMAGES="wordpress"
 ```
 
 [0]: https://github.com/sevenval/dockerfiles/blob/74ece293784680f18c89d4955a0881f93fd791f6/docker-build/run.sh#L8
