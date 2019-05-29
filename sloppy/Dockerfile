@@ -8,7 +8,7 @@ LABEL org.label-schema.build-date=$BUILD_DATE \
       org.label-schema.vcs-ref=$VCS_REF \
       org.label-schema.schema-version="1.0.0-rc1"
 
-ARG SLOPPY_CLI_VERSION=v1.12.0
+ARG SLOPPY_CLI_VERSION=v1.13.1
 ENV SLOPPY_CLI_VERSION=${SLOPPY_CLI_VERSION}
 ENV SLOPPY_APITOKEN=""
 WORKDIR /work
