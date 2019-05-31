@@ -1,5 +1,20 @@
 # 7val/sloppy-deployment
 
+Run a deployment to Sloppy via `sloppy.yml`. It generates a `sloppy.yml` from a
+Gomplate template file. The template file is copied ONBUILD with the name
+`sloppy.tmpl.yml`. The name can be overriden with the variable
+SLOPPY_TEMPLATE_FILE. The `sloppy.yml` gets generated via environment
+variables.
+
+## Variables
+
+* *DRY_RUN*: Just print the parsed `sloppy.yml` and do not run a deployment.
+* *SLOPPY_SAVE_SLOPPY_YAML*: Takes a filename as value. If this variable is set,
+  the deployed `sloppy.yml` is copied to SLOPPY_SAVE_SLOPPY_YAML. This should be
+  a volume to get the file out of the container. The volume **must** not be
+  mounted under `/work` which is the WORKDIR inside the container.
+  If DRY_RUN is also set, the file is save too.
+
 ## Test
 
 ```bash
