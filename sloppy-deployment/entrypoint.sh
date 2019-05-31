@@ -1,11 +1,11 @@
 #!/bin/bash -eu
 
 SLOPPY_OUTPUT_FILE="sloppy.yml"
-safe_yaml="${SLOPPY_SAVE_SLOPPY_YAML:-}"
+SLOPPY_SAFE_OUTPUT="${SLOPPY_SAVE_OUTPUT:-}"
 
 function cp_sloppy_yml () {
-  if [[ $safe_yaml ]] ; then
-     cp "$SLOPPY_OUTPUT_FILE" "$safe_yaml"
+  if [[ $SLOPPY_SAFE_OUTPUT ]] ; then
+     cp "$SLOPPY_OUTPUT_FILE" "$SLOPPY_SAFE_OUTPUT"
   fi
 }
 
