@@ -10,11 +10,70 @@ Opinionated conventions and best practices:
 
 ## Images
 
+### [7val/docker]
+![pulls](https://img.shields.io/docker/pulls/7val/docker.svg)
+![size](https://images.microbadger.com/badges/image/7val/docker.svg)
+[![commit](https://images.microbadger.com/badges/commit/7val/docker.svg)](https://microbadger.com/images/7val/docker)
+
 ### [7val/docker-build]
 ![pulls](https://img.shields.io/docker/pulls/7val/docker-build.svg)
-![size](https://img.shields.io/microbadger/image-size/7val/docker-build/latest.svg)
+![size](https://images.microbadger.com/badges/image/7val/docker-build.svg)
 [![commit](https://images.microbadger.com/badges/commit/7val/docker-build.svg)](https://microbadger.com/images/7val/docker-build)
 
+### [7val/docker-push]
+![pulls](https://img.shields.io/docker/pulls/7val/docker-push.svg)
+![size](https://images.microbadger.com/badges/image/7val/docker-push.svg)
+[![commit](https://images.microbadger.com/badges/commit/7val/docker-push.svg)](https://microbadger.com/images/7val/docker-push)
+
+### [7val/gitlab-job]
+![pulls](https://img.shields.io/docker/pulls/7val/gitlab-job.svg)
+![size](https://images.microbadger.com/badges/image/7val/gitlab-job.svg)
+[![commit](https://images.microbadger.com/badges/commit/7val/gitlab-job.svg)](https://microbadger.com/images/7val/gitlab-job)
+
+### [7val/gitlab-runner]
+![pulls](https://img.shields.io/docker/pulls/7val/gitlab-runner.svg)
+![size](https://images.microbadger.com/badges/image/7val/gitlab-runner.svg)
+[![commit](https://images.microbadger.com/badges/commit/7val/gitlab-runner.svg)](https://microbadger.com/images/7val/gitlab-runner)
+
+### [7val/httpd-static]
+![pulls](https://img.shields.io/docker/pulls/7val/httpd-static.svg)
+![size](https://images.microbadger.com/badges/image/7val/httpd-static.svg)
+[![commit](https://images.microbadger.com/badges/commit/7val/httpd-static.svg)](https://microbadger.com/images/7val/httpd-static)
+
+### [7val/nodejs-javascript-app]
+![pulls](https://img.shields.io/docker/pulls/7val/nodejs-javascript-app.svg)
+![size](https://images.microbadger.com/badges/image/7val/nodejs-javascript-app.svg)
+[![commit](https://images.microbadger.com/badges/commit/7val/nodejs-javascript-app.svg)](https://microbadger.com/images/7val/nodejs-javascript-app)
+
+### [7val/nodejs-javascript-builder]
+![pulls](https://img.shields.io/docker/pulls/7val/nodejs-javascript-builder.svg)
+![size](https://images.microbadger.com/badges/image/7val/nodejs-javascript-builder.svg)
+[![commit](https://images.microbadger.com/badges/commit/7val/nodejs-javascript-builder.svg)](https://microbadger.com/images/7val/nodejs-javascript-builder)
+
+### [7val/nodejs-runner]
+![pulls](https://img.shields.io/docker/pulls/7val/nodejs-runner.svg)
+![size](https://images.microbadger.com/badges/image/7val/nodejs-runner.svg)
+[![commit](https://images.microbadger.com/badges/commit/7val/nodejs-runner.svg)](https://microbadger.com/images/7val/nodejs-runner)
+
+### [7val/rancher-deployment]
+![pulls](https://img.shields.io/docker/pulls/7val/rancher-deployment.svg)
+![size](https://images.microbadger.com/badges/image/7val/rancher-deployment.svg)
+[![commit](https://images.microbadger.com/badges/commit/7val/rancher-deployment.svg)](https://microbadger.com/images/7val/rancher-deployment)
+
+### [7val/sloppy]
+![pulls](https://img.shields.io/docker/pulls/7val/sloppy.svg)
+![size](https://images.microbadger.com/badges/image/7val/sloppy.svg)
+[![commit](https://images.microbadger.com/badges/commit/7val/sloppy.svg)](https://microbadger.com/images/7val/sloppy)
+
+### [7val/sloppy-deployment]
+![pulls](https://img.shields.io/docker/pulls/7val/sloppy-deployment.svg)
+![size](https://images.microbadger.com/badges/image/7val/sloppy-deployment.svg)
+[![commit](https://images.microbadger.com/badges/commit/7val/sloppy.svg)](https://microbadger.com/images/7val/sloppy-deployment)
+
+### [7val/wordpress]
+![pulls](https://img.shields.io/docker/pulls/7val/wordpress.svg)
+![size](https://images.microbadger.com/badges/image/7val/wordpress.svg)
+[![commit](https://images.microbadger.com/badges/commit/7val/sloppy.svg)](https://microbadger.com/images/7val/wordpress)
 
 ## Build
 
@@ -41,5 +100,16 @@ make push -e IMAGES="wordpress"
 ```
 
 [0]: https://github.com/sevenval/dockerfiles/blob/74ece293784680f18c89d4955a0881f93fd791f6/docker-build/run.sh#L8
-
+[7val/docker]: https://cloud.docker.com/u/7val/repository/docker/7val/docker
 [7val/docker-build]: https://cloud.docker.com/u/7val/repository/docker/7val/docker-build
+[7val/docker-push]: https://cloud.docker.com/u/7val/repository/docker/7val/docker-push
+[7val/gitlab-job]: https://cloud.docker.com/u/7val/repository/docker/7val/gitlab-job
+[7val/gitlab-runner]: https://cloud.docker.com/u/7val/repository/docker/7val/gitlab-runner
+[7val/httpd-static]: https://cloud.docker.com/u/7val/repository/docker/7val/httpd-static
+[7val/nodejs-javascript-app]: https://cloud.docker.com/u/7val/repository/docker/7val/nodejs-javascript-app
+[7val/nodejs-javascript-builder]: https://cloud.docker.com/u/7val/repository/docker/7val/nodejs-javascript-builder
+[7val/nodejs-runner]: https://cloud.docker.com/u/7val/repository/docker/7val/nodejs-runner
+[7val/rancher-deployment]: https://cloud.docker.com/u/7val/repository/docker/7val/rancher-deployment
+[7val/sloppy]: https://cloud.docker.com/u/7val/repository/docker/7val/sloppy
+[7val/sloppy-deployment]: https://cloud.docker.com/u/7val/repository/docker/7val/sloppy-deployment
+[7val/wordpress]: https://cloud.docker.com/u/7val/repository/docker/7val/wordpress
