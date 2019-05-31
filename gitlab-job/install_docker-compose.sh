@@ -2,6 +2,8 @@
 
 # Supposed to run under Alpines Busybox SH
 
+INSTALL_DOCKER_COMPOSE_TRACE=1
+
 # optionally set trace mode
 [[ "$INSTALL_DOCKER_COMPOSE_TRACE" ]] && set -x
 
