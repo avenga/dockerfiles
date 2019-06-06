@@ -1,11 +1,14 @@
 #!/bin/bash -eu
 
+# Name of the Sloppy YAML configuration file
 SLOPPY_OUTPUT_FILE="sloppy.yml"
-SLOPPY_SAFE_OUTPUT="${SLOPPY_SAVE_OUTPUT:-}"
+# Name of the directory (which should be host volume) to where a copy of
+# $SLOPPY_OUTPUT_FILE is saved.
+SLOPPY_SAFE_OUTPUT_DIR="${SLOPPY_SAVE_OUTPUT:-}"
 
 function cp_sloppy_yml () {
-  if [[ $SLOPPY_SAFE_OUTPUT ]] ; then
-     cp "$SLOPPY_OUTPUT_FILE" "$SLOPPY_SAFE_OUTPUT"
+  if [[ $SLOPPY_SAFE_OUTPUT_DIR ]] ; then
+     cp "$SLOPPY_OUTPUT_FILE" "$SLOPPY_SAFE_OUTPUT_DIR"
   fi
 }
 
