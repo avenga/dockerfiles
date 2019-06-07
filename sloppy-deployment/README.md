@@ -9,8 +9,8 @@ variables.
 ## Variables
 
 * *DRY_RUN*: Just print the parsed `sloppy.yml` and do not run a deployment.
-* *SLOPPY_SAVE_OUTPUT*: Takes a filename as value. If this variable is set,
-  the deployed `sloppy.yml` is copied to SLOPPY_SAVE_OUTPUT. This should be
+* *SLOPPY_SAVE_OUTPUT_DIR*: Takes a filename as value. If this variable is set,
+  the deployed `sloppy.yml` is copied to SLOPPY_SAVE_OUTPUT_DIR. This should be
   a volume to get the file out of the container. The volume **must** not be
   mounted under `/work` which is the WORKDIR inside the container.
   If DRY_RUN is also set, the file is save too.
