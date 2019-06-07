@@ -99,6 +99,30 @@ Push specific docker images:
 make push -e IMAGES="wordpress"
 ```
 
+## Test
+
+All tests are
+[bats](https://github.com/bats-core/bats-core)-tests. They reside in a directory
+inside the image direcotry named `tests/`. There can be two types of
+tests. Pure Bats-tests or a Bash script called `test.sh`.
+
+### `test.sh`
+
+If a script called `test.sh` resides inside `<imagename>/tests` it is executed.
+`test.sh` is necessary when some preparations have to be made to run the Bats
+tests. Thus first all preparations are run and then the Bats tests.
+If there are any Bats tests they won't be executed by the test itself. Exceution
+must be done inside `test.sh`.
+
+One example is an image which delivers a nerworked service like a HTTP-server.
+This server is tested via HTTP. Thus a functioning network is necessary and the
+prep-code takes care of this. The tests of the Wordpress image leverage this.
+
+### Bats tests
+
+All Bats files under `<imagename>/tests` are executed.
+
+
 [0]: https://github.com/sevenval/dockerfiles/blob/74ece293784680f18c89d4955a0881f93fd791f6/docker-build/run.sh#L8
 [7val/docker]: https://cloud.docker.com/u/7val/repository/docker/7val/docker
 [7val/docker-build]: https://cloud.docker.com/u/7val/repository/docker/7val/docker-build

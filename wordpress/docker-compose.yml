@@ -2,6 +2,7 @@ version: '2.3'
 services:
 
   wordpress:
+    container_name: 7val-wp
     extends:
       file: example/docker-compose.yml
       service: wordpress
@@ -10,8 +11,17 @@ services:
       - 8008:80
     depends_on:
       - mysql
+    networks:
+      - test
 
   mysql:
     extends:
       file: example/docker-compose.yml
       service: mysql
+    networks:
+      - test
+
+networks:
+  test:
+    external:
+      name: test

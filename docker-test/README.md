@@ -1,9 +1,4 @@
-# 7val/docker-push
+# 7val/docker-test
 
-Push docker images to any registry. We use `docker push` inside docker to make sure to use the same docker version.
-
-## Usage
-
-```bash
-docker run --rm -v /var/run/docker.sock:/var/run/docker.sock -e IMAGES="nodejs-runner sloppy" 7val/docker-push
-```
+Provides an image to run tests for 7val images in this repo. More information
+can be found in ../README.md.
