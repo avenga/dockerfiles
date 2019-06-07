@@ -24,6 +24,8 @@ services:
     volumes:
       - .:/work
       - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - test
 
   push-images:
     build:
@@ -35,3 +37,7 @@ services:
     volumes:
       - .:/work
       - /var/run/docker.sock:/var/run/docker.sock
+
+networks:
+  test:
+    name: test
