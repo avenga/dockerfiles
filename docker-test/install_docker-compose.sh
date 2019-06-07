@@ -9,6 +9,8 @@
 # Sort'a strict mode
 set -euo pipefail
 
+set -x
+
 ###############################################################################
 ### define/initialize script wide variables
 
