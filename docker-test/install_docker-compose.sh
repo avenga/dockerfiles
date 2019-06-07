@@ -37,7 +37,7 @@ if [[ ! -f /.dockerenv ]] ; then
 fi
 
 # Ugly but fast hack to get docker-compose running under Alpine
-apk add --quiet --no-cache --no-progress curl
+apk add --quiet --no-cache --no-progress curl grep
 curl -s https://api.github.com/repos/sgerrand/alpine-pkg-glibc/releases/latest \
     | grep -P '^[ ]*"browser_download_url": "https://.*/glibc-[^-]+-r\d\.apk"$' \
     | cut -d '"' -f 4 \
