@@ -39,11 +39,11 @@ fi
 # Ugly but fast hack to get docker-compose running under Alpine
 apk add --quiet --no-cache --no-progress curl
 curl -s https://api.github.com/repos/sgerrand/alpine-pkg-glibc/releases/latest \
-    | grep -E '^[ ]*"browser_download_url": "https://.*/glibc-[^-]+-r\d\.apk"$' \
+    | grep -P '^[ ]*"browser_download_url": "https://.*/glibc-[^-]+-r\d\.apk"$' \
     | cut -d '"' -f 4 \
     | xargs curl -sL -o /tmp/glibc.apk
 curl -s https://api.github.com/repos/sgerrand/alpine-pkg-glibc/releases/latest \
-    | grep -E '^[ ]*"browser_download_url": "https://.*/glibc-bin-[^-]+-r\d\.apk"$' \
+    | grep -P '^[ ]*"browser_download_url": "https://.*/glibc-bin-[^-]+-r\d\.apk"$' \
     | cut -d '"' -f 4 \
     | xargs curl -sL -o /tmp/glibc-bin.apk
 apk add --quiet --no-progress --allow-untrusted --no-cache \
