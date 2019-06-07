@@ -5,6 +5,7 @@
 INSTALL_DOCKER_COMPOSE_TRACE=1
 
 # optionally set trace mode
+# shellcheck disable=SC2039
 [[ "$INSTALL_DOCKER_COMPOSE_TRACE" ]] && set -x
 
 # Sort'a strict mode
@@ -33,12 +34,13 @@ _bail () {
 
 ### main script
 
+# shellcheck disable=SC2039
 if [[ ! -f /.dockerenv ]] ; then
     _bail "Not running inside a Docker container"
 fi
 
 # Ugly but fast hack to get docker-compose running under Alpine
-apk add --quiet --no-cache --no-progress curl
+apk add --quiet --no-cache --no-progress curl grep
 curl -s https://api.github.com/repos/sgerrand/alpine-pkg-glibc/releases/latest \
     | grep -P '^[ ]*"browser_download_url": "https://.*/glibc-[^-]+-r\d\.apk"$' \
     | cut -d '"' -f 4 \
