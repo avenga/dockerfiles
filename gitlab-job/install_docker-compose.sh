@@ -2,8 +2,6 @@
 
 # Supposed to run under Alpines Busybox SH
 
-INSTALL_DOCKER_COMPOSE_TRACE=1
-
 # optionally set trace mode
 # shellcheck disable=SC2039
 [[ "$INSTALL_DOCKER_COMPOSE_TRACE" ]] && set -x
@@ -39,9 +37,9 @@ if [[ ! -f /.dockerenv ]] ; then
     _bail "Not running inside a Docker container"
 fi
 
-apk add -t d-c-install py-pip python-dev libffi-dev openssl-dev gcc libc-dev make
-pip install docker-compose
-rm -rf /root/.cache/
+apk add --quiet --no-progress --no-cache -t d-c-install python3-dev libffi-dev \
+    openssl-dev gcc libc-dev make
+pip3 -qqq --no-cache-dir install docker-compose
 apk del d-c-install
 
 # vim: ts=4 sw=4 expandtab ft=sh
