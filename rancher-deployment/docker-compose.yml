@@ -5,4 +5,7 @@ services:
       file: example/docker-compose.ops.yml
       service: deploy-test
     environment:
-      DRY_RUN: "true"
+      DRY_RUN: 1
+      RANCHER_SAVE_OUTPUT_DIR: /temp
+    volumes:
+      - ./example/temp:/temp
