@@ -31,6 +31,7 @@ services:
     build:
       context: ./docker-push
     environment:
+      - DRY_RUN
       - CI_REGISTRY_PASSWORD
       - CI_REGISTRY_USER
       - IMAGES

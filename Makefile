@@ -17,6 +17,8 @@ help:
 
 
 build:  ## Builds all images. `-e IMAGES="name"` builds single image.
+	@docker-compose -f docker-compose.ops.yml build --force-rm --no-cache --pull \
+		build-images
 	@docker-compose -f docker-compose.ops.yml run --rm \
 		-e IMAGE_PREFIX="$(IMAGE_PREFIX)" \
 		build-images
@@ -39,6 +41,8 @@ test: ## Tests all images where tests exist. `-e IMAGES="name"` runs test for a 
 	@make clean
 
 push: ## Pushes all images. `-e IMAGES="name"` pushes a single image.
+	@docker-compose -f docker-compose.ops.yml build --force-rm --no-cache --pull \
+		push-images
 	@docker-compose -f docker-compose.ops.yml run --rm \
 		-e IMAGE_PREFIX="$(IMAGE_PREFIX)" \
 		-e CURRENT_BRANCH="$(CURRENT_BRANCH)" \
