@@ -12,8 +12,6 @@ RUN ln -s /opt/bats/bin/bats /usr/sbin/bats \
 #
 ENV IMAGE_PREFIX=""
 ENV IMAGES=""
-ENV CURRENT_BRANCH=""
-ENV ONLY_BRANCH="master"
 ENV GIT_DIFF="@~..@"
 
 COPY run.sh /
