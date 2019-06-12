@@ -114,7 +114,7 @@ tests. Thus first all preparations are run and then the Bats tests.
 If there are any Bats tests they won't be executed by the test itself. Exceution
 must be done inside `test.sh`.
 
-One example is an image which delivers a nerworked service like a HTTP-server.
+One example is an image which delivers a networked service like a HTTP-server.
 This server is tested via HTTP. Thus a functioning network is necessary and the
 prep-code takes care of this. The tests of the Wordpress image leverage this.
 
