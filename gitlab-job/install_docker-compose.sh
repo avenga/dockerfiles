@@ -39,24 +39,9 @@ if [[ ! -f /.dockerenv ]] ; then
     _bail "Not running inside a Docker container"
 fi
 
-# Ugly but fast hack to get docker-compose running under Alpine
-apk add --quiet --no-cache --no-progress curl grep
-curl -s https://api.github.com/repos/sgerrand/alpine-pkg-glibc/releases/latest \
-    | grep -P '^[ ]*"browser_download_url": "https://.*/glibc-[^-]+-r\d\.apk"$' \
-    | cut -d '"' -f 4 \
-    | xargs curl -sL -o /tmp/glibc.apk
-curl -s https://api.github.com/repos/sgerrand/alpine-pkg-glibc/releases/latest \
-    | grep -P '^[ ]*"browser_download_url": "https://.*/glibc-bin-[^-]+-r\d\.apk"$' \
-    | cut -d '"' -f 4 \
-    | xargs curl -sL -o /tmp/glibc-bin.apk
-apk add --quiet --no-progress --allow-untrusted --no-cache \
-    /tmp/glibc.apk /tmp/glibc-bin.apk
-rm /tmp/glibc*.apk
-curl -s https://api.github.com/repos/docker/compose/releases/latest \
-    | grep -E '^[ ]*"browser_download_url": "https://.*Linux-x86_64"$' \
-    | cut -d '"' -f 4 \
-    | xargs curl -sL -o /usr/local/bin/docker-compose
-chmod +x /usr/local/bin/docker-compose
-
+apk add -t d-c-install py-pip python-dev libffi-dev openssl-dev gcc libc-dev make
+pip install docker-compose
+rm -rf /root/.cache/
+apk del d-c-install
 
 # vim: ts=4 sw=4 expandtab ft=sh
