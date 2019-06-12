@@ -18,9 +18,11 @@ before_script:
   # Fetch master to decide what needs to be rebuilt:
   - git remote set-branches --add origin master
   - git fetch
+  # See issue: https://graysonkoonce.com/getting-the-current-branch-name-during-a-pull-request-in-travis-ci/
+  - export BRANCH=$(if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then echo $TRAVIS_BRANCH; else echo $TRAVIS_PULL_REQUEST_BRANCH; fi)
 
 script:
   # build docker images:
   - make build
   # push docker images to registry if master branch:
-  - make push -e CURRENT_BRANCH="$TRAVIS_BRANCH" -e ONLY_BRANCH="master"
+  - make push -e CURRENT_BRANCH="$BRANCH" -e ONLY_BRANCH="master"
