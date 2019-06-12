@@ -3,6 +3,10 @@
 DOCKER_COMPOSE_OUTPUT_FILE="./docker-compose.yml"
 RANCHER_COMPOSE_OUTPUT_FILE="./rancher-compose.yml"
 
+# Name of the directory (should be a host volume) to where a copy of
+# $DOCKER_COMPOSE_OUTPUT_FILE and RANCHER_COMPOSE_OUTPUT_FILE is saved.
+RANCHER_SAVE_OUTPUT_DIR="${RANCHER_SAVE_OUTPUT_DIR:-}"
+
 STACK="${ENVIRONMENT}"
 
 gomplate -f "/work/${DOCKER_COMPOSE_TEMPLATE_FILE}" \
@@ -15,8 +19,14 @@ gomplate -f "/work/${RANCHER_COMPOSE_TEMPLATE_FILE}" \
   -d globals="file:///environments/" \
   -o "${RANCHER_COMPOSE_OUTPUT_FILE}"
 
+if [[ -n $RANCHER_SAVE_OUTPUT_DIR ]] ; then
+  cp "$DOCKER_COMPOSE_OUTPUT_FILE" "$RANCHER_SAVE_OUTPUT_DIR"
+  cp "$RANCHER_COMPOSE_OUTPUT_FILE" "$RANCHER_SAVE_OUTPUT_DIR"
+fi
+
 if [[ -n "$DRY_RUN" ]]; then
   cat "${DOCKER_COMPOSE_OUTPUT_FILE}"
+  echo "---" # signal the start of another document
   cat "${RANCHER_COMPOSE_OUTPUT_FILE}"
 else
   if [[ -n "$SETUP_VOLUMES" ]]; then

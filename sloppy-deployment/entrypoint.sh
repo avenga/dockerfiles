@@ -6,21 +6,17 @@ SLOPPY_OUTPUT_FILE="sloppy.yml"
 # $SLOPPY_OUTPUT_FILE is saved.
 SLOPPY_SAVE_OUTPUT_DIR="${SLOPPY_SAVE_OUTPUT_DIR:-}"
 
-function cp_sloppy_yml () {
-  if [[ $SLOPPY_SAVE_OUTPUT_DIR ]] ; then
-     cp "$SLOPPY_OUTPUT_FILE" "$SLOPPY_SAVE_OUTPUT_DIR"
-  fi
-}
-
 gomplate -f "/work/${SLOPPY_TEMPLATE_FILE}" \
   -d environment="file:///environments/${ENVIRONMENT}/" \
   -d globals="file:///environments/" \
   -o "${SLOPPY_OUTPUT_FILE}"
 
+if [[ $SLOPPY_SAVE_OUTPUT_DIR ]] ; then
+  cp "$SLOPPY_OUTPUT_FILE" "$SLOPPY_SAVE_OUTPUT_DIR"
+fi
+
 if [[ -n "$DRY_RUN" ]]; then
   cat "${SLOPPY_OUTPUT_FILE}"
-  cp_sloppy_yml
 else
   sloppy change -f $SLOPPY_OUTPUT_FILE
-  cp_sloppy_yml
 fi
