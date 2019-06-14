@@ -19,6 +19,7 @@ while IFS= read -r IMAGE_NAME
 do
     ( cd "$IMAGE_NAME"
     if [[ -d ./tests ]] ; then
+        echo "Running test for $IMAGE_NAME"
         if [[ -f tests/test.sh ]] ; then
             ./tests/test.sh
         else

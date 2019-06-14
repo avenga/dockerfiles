@@ -16,7 +16,7 @@ help:
 # TODO Add make traps for docker-compose
 
 
-build:  ## Builds all images. `-e IMAGES="name"` builds single image.
+build:  ## Builds all changed images. `-e IMAGES="name"` builds single image.
 	@docker-compose -f docker-compose.ops.yml build --force-rm --no-cache --pull \
 		build-images
 	@docker-compose -f docker-compose.ops.yml run --rm \
@@ -24,7 +24,7 @@ build:  ## Builds all images. `-e IMAGES="name"` builds single image.
 		build-images
 
 .PHONY: test
-test: ## Tests all images where tests exist. `-e IMAGES="name"` runs test for a single image.
+test: ## Tests all changed images where tests exist. `-e IMAGES="name"` runs test for a single image.
 	@docker-compose \
 		--log-level ERROR \
 		-f docker-compose.ops.yml \
@@ -40,7 +40,7 @@ test: ## Tests all images where tests exist. `-e IMAGES="name"` runs test for a 
 		test-images || make clean
 	@make clean
 
-push: ## Pushes all images. `-e IMAGES="name"` pushes a single image.
+push: ## Pushes all changed images. `-e IMAGES="name"` pushes a single image.
 	@docker-compose -f docker-compose.ops.yml build --force-rm --no-cache --pull \
 		push-images
 	@docker-compose -f docker-compose.ops.yml run --rm \
