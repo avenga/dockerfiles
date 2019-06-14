@@ -9,7 +9,7 @@ CHANGES=$(git diff --name-only "$GIT_DIFF" | \
 	sort -u | \
 	awk 'BEGIN {FS="/"} {print $1}' | \
 	uniq | \
-	xargs -I % find . -type d -name % -exec basename {} \; \
+	xargs -I % find . -type d -name % -maxdepth 1 -exec basename {} \; \
 )
 IMAGES="${IMAGES:-$CHANGES}"
 
@@ -27,8 +27,8 @@ else
   do
     if [ -d "$IMAGE_NAME" ]
     then
-      DOCKERFILE="${DOCKERFILE:-$WORKDIR/$IMAGE_NAME/Dockerfile}"
-      CONTEXT="${CONTEXT:-$WORKDIR/$IMAGE_NAME}"
+      DOCKERFILE="$WORKDIR/$IMAGE_NAME/Dockerfile"
+      CONTEXT="$WORKDIR/$IMAGE_NAME"
       TAG=$IMAGE_PREFIX$IMAGE_NAME:$IMAGE_TAG
       COMMIT_TAG=$IMAGE_PREFIX$IMAGE_NAME:$VERSION
       DOCKERFILE_FLAG=""
@@ -60,7 +60,7 @@ else
         --label org.label-schema.name=\"$IMAGE_NAME\" \\
         $DOCKERFILE_FLAG \\
         $CONTEXT"
-			echo "$COMMAND"
+	  echo "$COMMAND"
       eval "$COMMAND"
     fi
   done < <(echo "$IMAGES" | tr " " "\n")

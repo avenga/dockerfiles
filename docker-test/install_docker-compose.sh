@@ -40,6 +40,6 @@ fi
 apk add --quiet --no-progress --no-cache -t d-c-install python3-dev libffi-dev \
     openssl-dev gcc libc-dev make
 pip3 -qqq --no-cache-dir install docker-compose
-apk del d-c-install
+apk del --quiet --no-progress --no-cache d-c-install
 
 # vim: ts=4 sw=4 expandtab ft=sh
