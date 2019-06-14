@@ -24,5 +24,7 @@ before_script:
 script:
   # build docker images:
   - make build
+  # run tests when available
+  - make test
   # push docker images to registry if master branch:
   - make push -e CURRENT_BRANCH="$BRANCH" -e ONLY_BRANCH="master"
