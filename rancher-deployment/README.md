@@ -1,8 +1,10 @@
 # 7val/rancher-deployment
 
-Run a deployment to [Rancher][1] via generated `docker-compose.yml` and `rancher-compose.yml` files.
-It generates these files based on Go's [Package][2] `text/template` and processed with [Gomplate][3].
-The template files `docker-compose.tmpl.yml` and `rancher-compose.tmpl.yml` are copied with an `ONBUILD` [trigger][4].
+Run a deployment to [Rancher][1] via generated `docker-compose.yml` and
+`rancher-compose.yml` files.  It generates these files based on Go's
+[Package][2] `text/template` and processed with [Gomplate][3].  The template
+files `docker-compose.tmpl.yml` and `rancher-compose.tmpl.yml` are copied with
+an `ONBUILD` [trigger][4].
 
 ## Environment Variables
 
@@ -17,7 +19,9 @@ The template files `docker-compose.tmpl.yml` and `rancher-compose.tmpl.yml` are 
 ```bash
 docker-compose run test
 ```
-This triggers a dry run of a rancher deployment. That means it will only show the processed output of the `example/deployment/docker-compose.tmpl.yml` and `example/deployment/rancher-compose.tmpl.yml` files.
+This triggers a dry run of a rancher deployment. That means it will only show
+the processed output of the `example/deployment/docker-compose.tmpl.yml` and
+`example/deployment/rancher-compose.tmpl.yml` files.
 
 ## Usage as Rancher CLI
 

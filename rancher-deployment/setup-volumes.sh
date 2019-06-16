@@ -1,6 +1,14 @@
-#!/bin/bash -eu
+#!/usr/bin/env bash
 
-VOLUMES=($VOLUME_NAMES)
+# optionally set trace mode
+[[ "$SETUP_VOLUMES_TRACE" ]] && set -x
+
+# Bash Strict Mode, s. http://redsymbol.net/articles/unofficial-bash-strict-mode/
+set -euo pipefail
+IFS=$'\n\t'
+
+declare -a VOLUMES
+VOLUMES=("${VOLUME_NAMES[@]}")
 
 for VOLUME in "${VOLUMES[@]}"; do
   VOLUME_NAME="${VOLUME_PREFIX}${ENVIRONMENT}-${VOLUME}"
