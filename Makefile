@@ -23,6 +23,7 @@ build:  ## Builds all changed images. `-e IMAGES="name"` builds single image.
 		-e IMAGE_PREFIX="$(IMAGE_PREFIX)" \
 		build-images
 
+# FIXME do not pull image! Or fail if image is not local!
 .PHONY: test
 test: ## Tests all changed images where tests exist. `-e IMAGES="name"` runs test for a single image.
 	@docker-compose \
