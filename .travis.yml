@@ -22,6 +22,8 @@ before_script:
   - export BRANCH=$(if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then echo $TRAVIS_BRANCH; else echo $TRAVIS_PULL_REQUEST_BRANCH; fi)
 
 script:
+  # stop immediately if there's a failure
+  - set -e
   # build docker images:
   - make build
   # run tests when available

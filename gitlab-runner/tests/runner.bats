@@ -4,5 +4,5 @@
     run docker run --rm --entrypoint gitlab-runner 7val/gitlab-runner --version
     echo "$output"
     [[ $status -eq 0 ]]
-    [[ $output =~ Version:.*11.11.2 ]]
+    [[ $output =~ Version:.*12.0.0 ]]
 }
