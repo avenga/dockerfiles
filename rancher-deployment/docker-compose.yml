@@ -1,6 +1,6 @@
 version: '2.3'
 services:
-  rancher-test:
+  test:
     extends:
       file: example/docker-compose.ops.yml
       service: deploy-test

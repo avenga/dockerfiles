@@ -16,8 +16,14 @@ ENV DOCKER_COMPOSE_TEMPLATE_FILE=${DOCKER_COMPOSE_TEMPLATE_FILE}
 ENV RANCHER_COMPOSE_TEMPLATE_FILE=${RANCHER_COMPOSE_TEMPLATE_FILE}
 # set to anything but not empty to setup volumes
 ENV SETUP_VOLUMES=""
+# a space-separated list of volumes that will be created if not present
+ENV VOLUME_NAMES=""
 # Optionally deploy specific service:
 ENV SERVICE=""
+
+# For testing only. Simulate the output of rancher CLI.
+# Set to one of VOLUME_NAMES to simulate a match.
+ENV TEST_VOLUME_NAME=""
 
 VOLUME /environments
 WORKDIR /work

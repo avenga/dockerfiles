@@ -12,5 +12,6 @@ services:
       ENVIRONMENT: "test"
       # If not set all the services will be deployed:
       SERVICE: "hello-world"
+      SETUP_VOLUMES: 1
     volumes:
       - ./environments:/environments
