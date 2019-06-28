@@ -4,6 +4,6 @@
 set -euo pipefail
 IFS=$'\n\t'
 
-docker-compose build rancher-test
+docker-compose build test
 trap 'docker-compose down -v --remove-orphans' ERR EXIT
 bats --tap tests/

@@ -17,8 +17,7 @@ services:
 
 
   test-images:
-    build:
-      context: ./docker-test
+    image: 7val/docker-test
     environment:
       - IMAGES
     volumes:

@@ -13,6 +13,9 @@ an `ONBUILD` [trigger][4].
   the generated files are copied to this directory. This should be
   a mounted volume to get the files out of the container. The volume **MUST NOT** be
   mounted under `/work` which is the `WORKDIR` inside the container.
+* `SETUP_VOLUMES`: Set to anything but empty to setup volumes defined in `VOLUME_NAMES`
+* `VOLUME_NAMES`: Space-separated list of volumes to create.
+  Already created volumes will be ignored. Will only run if `SETUP_VOLUMES` is set to a non-empty value.
 
 ## Test
 
