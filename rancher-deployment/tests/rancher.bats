@@ -20,3 +20,9 @@
     [[ $status -eq 0 ]]
     [[ ! "$output" =~ "Try to set up rancher volumes" ]]
 }
+
+@test "SETUP_VOLUMES not set should not fail" {
+    run  docker-compose run --rm test
+    echo "$output"
+    [[ $status -eq 0 ]]
+}
