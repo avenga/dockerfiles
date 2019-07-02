@@ -41,12 +41,16 @@ if [[ -n "$DRY_RUN" ]]; then
   cat "${RANCHER_COMPOSE_OUTPUT_FILE}"
 else
   echo "Upgrading $ENVIRONMENT ..."
-  rancher up -f "${DOCKER_COMPOSE_OUTPUT_FILE}" --rancher-file "${RANCHER_COMPOSE_OUTPUT_FILE}" --upgrade --pull -d --force-upgrade --stack "$STACK" "$SERVICE"
+  # WARNING - never ever quote $SERVICE. rancher-cli doesn't seem to like it! TODO Why?
+  # shellcheck disable=SC2086
+  rancher up -f "${DOCKER_COMPOSE_OUTPUT_FILE}" --rancher-file "${RANCHER_COMPOSE_OUTPUT_FILE}" --upgrade --pull -d --force-upgrade --stack "$STACK" $SERVICE
   rancher --wait-state upgraded wait
   rancher --wait-state healthy wait
 
   echo "Confirming upgrade for $ENVIRONMENT ..."
-  rancher up -f "${DOCKER_COMPOSE_OUTPUT_FILE}" --rancher-file "${RANCHER_COMPOSE_OUTPUT_FILE}" --confirm-upgrade -d --stack "$STACK" "$SERVICE"
+  # WARNING - never ever quote $SERVICE. rancher-cli doesn't seem to like it! TODO Why?
+  # shellcheck disable=SC2086
+  rancher up -f "${DOCKER_COMPOSE_OUTPUT_FILE}" --rancher-file "${RANCHER_COMPOSE_OUTPUT_FILE}" --confirm-upgrade -d --stack "$STACK" $SERVICE
   rancher --wait-state active wait
   rancher --wait-state healthy wait
 fi
