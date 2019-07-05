@@ -1,4 +1,10 @@
-#!/bin/bash -eu
+#!/usr/bin/env bash
+
+[[ "$SLOPPY_DEPLOYMENT_TRACE" ]] && set -x
+
+### FIXME needs to be thoroughly tested before activated
+#set -euo pipefail
+#IFS=$'\n\t'
 
 # Name of the Sloppy YAML configuration file
 SLOPPY_OUTPUT_FILE="sloppy.yml"
