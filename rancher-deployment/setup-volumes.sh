@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
+SETUP_VOLUMES_TRACE="${SETUP_VOLUMES_TRACE:-}"
 # optionally set trace mode
-[[ "$SETUP_VOLUMES_TRACE" ]] && set -x
+[[ -n "$SETUP_VOLUMES_TRACE" ]] && set -x
 
 # Bash Strict Mode, s. http://redsymbol.net/articles/unofficial-bash-strict-mode/
 set -euo pipefail

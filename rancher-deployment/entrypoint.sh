@@ -1,4 +1,11 @@
-#!/bin/bash -eu
+#!/usr/bin/env bash
+
+RANCHER_DEPLOYMENT_TRACE="${RANCHER_DEPLOYMENT_TRACE:-}"
+# optionally set trace mode
+[[ -n "$RANCHER_DEPLOYMENT_TRACE" ]] && set -x
+
+# Bash Strict Mode, s. http://redsymbol.net/articles/unofficial-bash-strict-mode/
+set -euo pipefail
 
 DOCKER_COMPOSE_OUTPUT_FILE="./docker-compose.yml"
 RANCHER_COMPOSE_OUTPUT_FILE="./rancher-compose.yml"
