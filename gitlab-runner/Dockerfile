@@ -5,7 +5,7 @@ FROM gitlab/gitlab-runner:${GITLAB_RUNNER_IMAGE_TAG} AS release
 ENV RUNNER_LIMIT="1"
 ENV RUNNER_REQUEST_CONCURRENCY="1"
 ENV RUNNER_EXECUTOR="docker"
-ENV DOCKER_IMAGE="docker:stable"
+ENV DOCKER_IMAGE="7val/gitlab-job:latest"
 
 COPY register-runner.sh /
 ENTRYPOINT ["/usr/bin/dumb-init", "/register-runner.sh"]
