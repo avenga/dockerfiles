@@ -1,26 +1,26 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # gitlab-runner data directory
 DATA_DIR="/etc/gitlab-runner"
+CACHE_DIR="/cache"
 CONFIG_FILE=${CONFIG_FILE:-$DATA_DIR/config.toml}
-# custom certificate authority path
-CA_CERTIFICATES_PATH=${CA_CERTIFICATES_PATH:-$DATA_DIR/certs/ca.crt}
-LOCAL_CA_PATH="/usr/local/share/ca-certificates/ca.crt"
+HOSTNAME=${HOSTNAME:-gitlab-runner}
+# Default RUNNER_NAME=HOSTNAME
+RUNNER_NAME=${RUNNER_NAME:-$HOSTNAME}
 
-update_ca() {
-  echo "Updating CA certificates..."
-  cp "${CA_CERTIFICATES_PATH}" "${LOCAL_CA_PATH}"
-  update-ca-certificates --fresh >/dev/null
-}
-
-if [ -f "${CA_CERTIFICATES_PATH}" ]; then
-  # update the ca if the custom ca is different than the current
-  cmp -s "${CA_CERTIFICATES_PATH}" "${LOCAL_CA_PATH}" || update_ca
+gitlab-runner verify --name "${RUNNER_NAME}"
+UNVERIFIED=$?
+if [[ $UNVERIFIED -eq 0 ]]; then
+  echo "Runner already registered."
+else
+  echo "Delete unverified runners from config file."
+  gitlab-runner verify --delete --name "${RUNNER_NAME}"
+  echo "Unregister runner."
+  gitlab-runner unregister --name "${RUNNER_NAME}"
+  gitlab-runner register --non-interactive \
+    --docker-volumes "/var/run/docker.sock:/var/run/docker.sock" \
+    --docker-volumes "${CACHE_DIR}"
 fi
-
-gitlab-runner register --non-interactive \
-  --docker-volumes "/var/run/docker.sock:/var/run/docker.sock" \
-  --docker-volumes "/cache" \
 
 # launch gitlab-runner passing all arguments
 exec gitlab-runner "$@"
