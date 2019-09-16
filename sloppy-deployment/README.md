@@ -1,5 +1,9 @@
 # 7val/sloppy-deployment
 
+![pulls](https://img.shields.io/docker/pulls/7val/sloppy-deployment.svg)
+![size](https://images.microbadger.com/badges/image/7val/sloppy-deployment.svg)
+[![commit](https://images.microbadger.com/badges/commit/7val/sloppy.svg)](https://microbadger.com/images/7val/sloppy-deployment)
+
 Run a deployment to Sloppy via `sloppy.yml`. It generates a `sloppy.yml` from a
 Gomplate template file. The template file is copied ONBUILD with the name
 `sloppy.tmpl.yml`. The name can be overriden with the variable

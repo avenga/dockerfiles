@@ -1,5 +1,9 @@
 # 7val/gitlab-runner
 
+![pulls](https://img.shields.io/docker/pulls/7val/gitlab-runner.svg)
+![size](https://images.microbadger.com/badges/image/7val/gitlab-runner.svg)
+[![commit](https://images.microbadger.com/badges/commit/7val/gitlab-runner.svg)](https://microbadger.com/images/7val/gitlab-runner)
+
 A gitlab-runner with automatic registration.
 
 ## Usage

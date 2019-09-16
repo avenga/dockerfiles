@@ -1,7 +1,8 @@
 # 7val/docker-build
 
-[![](https://images.microbadger.com/badges/image/7val/docker-build.svg)](https://microbadger.com/images/7val/docker-build "Get your own image badge on microbadger.com")
-[![](https://images.microbadger.com/badges/commit/7val/docker-build.svg)](https://microbadger.com/images/7val/docker-build "Get your own commit badge on microbadger.com")
+![pulls](https://img.shields.io/docker/pulls/7val/docker-build.svg)
+![size](https://images.microbadger.com/badges/image/7val/docker-build.svg)
+[![commit](https://images.microbadger.com/badges/commit/7val/docker-build.svg)](https://microbadger.com/images/7val/docker-build)
 
 Build docker images inside docker to make sure to use the same docker version and to set specific labels.
 

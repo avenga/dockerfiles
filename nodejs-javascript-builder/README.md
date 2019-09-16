@@ -1,5 +1,9 @@
 # 7val/nodejs-javascript-builder
 
+![pulls](https://img.shields.io/docker/pulls/7val/nodejs-javascript-builder.svg)
+![size](https://images.microbadger.com/badges/image/7val/nodejs-javascript-builder.svg)
+![commit](https://images.microbadger.com/badges/commit/7val/nodejs-javascript-builder.svg)
+
 Opinionated docker image to build nodejs apps written in javascript.
 Only used as a stage in a [multi-stage][1] build.
 

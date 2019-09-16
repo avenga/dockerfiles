@@ -1,5 +1,9 @@
 # Sevenval nodejs-javascript-app
 
+![pulls](https://img.shields.io/docker/pulls/7val/nodejs-javascript-app.svg)
+![size](https://images.microbadger.com/badges/image/7val/nodejs-javascript-app.svg)
+[![commit](https://images.microbadger.com/badges/commit/7val/nodejs-javascript-app.svg)](https://microbadger.com/images/7val/nodejs-javascript-app)
+
 Opinionated docker image to run production-ready nodejs apps written in javascript.
 Only used as a stage in a [multi-stage][1] build.
 
