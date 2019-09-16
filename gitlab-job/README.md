@@ -1,5 +1,9 @@
 # 7val/gitlab-job
 
+![pulls](https://img.shields.io/docker/pulls/7val/gitlab-job.svg)
+![size](https://images.microbadger.com/badges/image/7val/gitlab-job.svg)
+[![commit](https://images.microbadger.com/badges/commit/7val/gitlab-job.svg)](https://microbadger.com/images/7val/gitlab-job)
+
 Used in `.gitlab-ci.yml` to specify a Docker image to use for the gitlab job:
 
 ```yml

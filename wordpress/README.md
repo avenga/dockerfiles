@@ -1,9 +1,8 @@
 # 7val/wordpress
 
-[![Docker Automated build](https://img.shields.io/docker/automated/7val/wordpress.svg)](https://hub.docker.com/r/7val/wordpress)
-[![Docker Build Status](https://img.shields.io/docker/build/7val/wordpress.svg)](https://hub.docker.com/r/7val/wordpress/builds/)
-[![Docker Pulls](https://img.shields.io/docker/pulls/7val/wordpress.svg)](https://hub.docker.com/r/7val/wordpress/)
-
+![pulls](https://img.shields.io/docker/pulls/7val/wordpress.svg)
+![size](https://images.microbadger.com/badges/image/7val/wordpress.svg)
+[![commit](https://images.microbadger.com/badges/commit/7val/sloppy.svg)](https://microbadger.com/images/7val/wordpress)
 
 ## Usage
 

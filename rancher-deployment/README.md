@@ -1,5 +1,9 @@
 # 7val/rancher-deployment
 
+![pulls](https://img.shields.io/docker/pulls/7val/rancher-deployment.svg)
+![size](https://images.microbadger.com/badges/image/7val/rancher-deployment.svg)
+[![commit](https://images.microbadger.com/badges/commit/7val/rancher-deployment.svg)](https://microbadger.com/images/7val/rancher-deployment)
+
 Run a deployment to [Rancher][1] via generated `docker-compose.yml` and
 `rancher-compose.yml` files.  It generates these files based on Go's
 [Package][2] `text/template` and processed with [Gomplate][3].  The template
