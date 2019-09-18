@@ -4,6 +4,8 @@ CI_REGISTRY ?= docker.io
 IMAGE_PREFIX ?= $(CI_REGISTRY)/7val/
 CURRENT_BRANCH ?= $(shell git symbolic-ref --short HEAD)
 ONLY_BRANCH ?= master
+# needed to mount files inside a container started inside a container
+HOST_PATH=$(shell pwd)
 
 .PHONY: help
 help:
@@ -26,13 +28,15 @@ build:  ## Builds all changed images. `-e IMAGES="name"` builds single image.
 # FIXME do not pull image! Or fail if image is not local!
 .PHONY: test
 test: ## Tests all changed images where tests exist. `-e IMAGES="name"` runs test for a single image.
-	@docker-compose \
+	@export HOST_PATH=$(HOST_PATH); \
+		docker-compose \
 		--log-level ERROR \
 		-f docker-compose.ops.yml \
 		build \
 		--force-rm \
 		test-images
-	@docker-compose \
+	@export HOST_PATH=$(HOST_PATH); \
+		docker-compose \
 		-f docker-compose.ops.yml \
 		--log-level ERROR \
 		run \

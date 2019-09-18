@@ -9,4 +9,4 @@ services:
     environment:
       ENVIRONMENT: "test"
     volumes:
-      - ./environments:/environments
+      - ${HOST_PATH}/sloppy-deployment/tests/environments:/environments
