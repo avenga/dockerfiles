@@ -20,8 +20,9 @@ services:
     image: 7val/docker-test
     environment:
       - IMAGES
+      - HOST_PATH
     volumes:
-      - .:/work
+      - ${HOST_PATH}:/work
       - /var/run/docker.sock:/var/run/docker.sock
     networks:
       - test
