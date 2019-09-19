@@ -19,9 +19,11 @@ help:
 
 
 build:  ## Builds all changed images. `-e IMAGES="name"` builds single image.
-	@docker-compose -f docker-compose.ops.yml build --force-rm --no-cache --pull \
+	@export HOST_PATH=$(HOST_PATH); \
+		docker-compose -f docker-compose.ops.yml build --force-rm --no-cache --pull \
 		build-images
-	@docker-compose -f docker-compose.ops.yml run --rm \
+	@export HOST_PATH=$(HOST_PATH); \
+		docker-compose -f docker-compose.ops.yml run --rm \
 		-e IMAGE_PREFIX="$(IMAGE_PREFIX)" \
 		build-images
 
@@ -46,9 +48,11 @@ test: ## Tests all changed images where tests exist. `-e IMAGES="name"` runs tes
 	@make clean
 
 push: ## Pushes all changed images. `-e IMAGES="name"` pushes a single image.
-	@docker-compose -f docker-compose.ops.yml build --force-rm --no-cache --pull \
+	@export HOST_PATH=$(HOST_PATH); \
+		docker-compose -f docker-compose.ops.yml build --force-rm --no-cache --pull \
 		push-images
-	@docker-compose -f docker-compose.ops.yml run --rm \
+	@export HOST_PATH=$(HOST_PATH); \
+		docker-compose -f docker-compose.ops.yml run --rm \
 		-e IMAGE_PREFIX="$(IMAGE_PREFIX)" \
 		-e CURRENT_BRANCH="$(CURRENT_BRANCH)" \
 		-e ONLY_BRANCH="$(ONLY_BRANCH)" \
