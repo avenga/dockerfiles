@@ -17,9 +17,9 @@ Both modes require the projects name to be given in the template or file.
 ### `template`
 
 It generates a `sloppy.yml` from a [Gomplate](https://gomplate.ca/) template
-file. The name can be overriden with the variable SLOPPY_TEMPLATE_FILE. The
-`sloppy.yml` gets generated via environment variables. See
-[test/deployment](test/deployment) for an example.
+file. The name can be overriden with the variable SLOPPY_TEMPLATE_FILE, but the
+format must be YAML. The `sloppy.yml` gets generated via environment variables.
+See [test/deployment](test/deployment) for an example.
 
 ### `file`
 
