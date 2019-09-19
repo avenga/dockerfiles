@@ -1,0 +1,22 @@
+version: '2.3'
+services:
+  template-test:
+    extends:
+      file: tests/docker-compose.ops.yml
+      service: template-test
+    environment:
+      DRY_RUN: "true"
+      SLOPPY_MODE: "template"
+      SLOPPY_CONFIG_FILE: "sloppy.tmpl.yml"
+      SLOPPY_ROLLOUT_TRACE: 1
+      SLOPPY_SAVE_OUTPUT_DIR: /test-output
+  file-test:
+    extends:
+      file: tests/docker-compose.ops.yml
+      service: file-test
+    environment:
+      DRY_RUN: "true"
+      SLOPPY_MODE: "file"
+      SLOPPY_CONFIG_FILE: "sloppy.json"
+      SLOPPY_ROLLOUT_TRACE: 1
+      SLOPPY_SAVE_OUTPUT_DIR: /test-output

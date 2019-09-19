@@ -1,0 +1,27 @@
+{
+  "project": "elk-stack",
+  "services": [
+    {
+      "id": "elk",
+      "apps": [
+        {
+          "id": "curl",
+          "image": "shorty/curl",
+          "instances": 1,
+          "mem": 64,
+          "ssl": false,
+          "env": {
+            "SLPY_TARGET": "app-development app-staging app-production",
+            "LOGSTASH_HOSTNAME": "logstash.elk.elk-stack.devops.node.intern",
+            "ES_HOSTNAME": "es.elk.elk-stack"
+          },
+          "volumes": [
+          ],
+          "health_checks": [
+          ],
+          "logging": null
+        }
+      ]
+    }
+  ]
+}

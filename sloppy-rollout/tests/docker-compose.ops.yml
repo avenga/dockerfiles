@@ -1,0 +1,18 @@
+version: '2.3'
+services:
+  template-test:
+    build:
+      context: ./deployment
+    env_file:
+      - environments/test/sloppy.env
+      - environments/test/website.env
+    environment:
+      TEMPLATE_ENVIRONMENT: "test"
+    volumes:
+      - ${HOST_PATH}/sloppy-rollout/tests/environments:/environments
+      - ${HOST_PATH}/sloppy-rollout/tests/tmp:/test-output
+  file-test:
+    build:
+      context: ./pure-file
+    volumes:
+      - ${HOST_PATH}/sloppy-rollout/tests/tmp:/test-output

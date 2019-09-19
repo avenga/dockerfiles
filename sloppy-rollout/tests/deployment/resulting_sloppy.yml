@@ -1,0 +1,15 @@
+version: "v1"
+project: "test"
+services:
+  frontend:
+    website:
+      image: "projectx/website:1.0"
+      instances: 1
+      mem: 128
+      ssl: true
+      port: 8080
+      env:
+        - WEBSITE_PORT: "8080"
+        - HAPROXY_0_REDIRECT_TO_HTTPS : "true"
+        - AWESOME: "yeah"
+      domain: sub1.example.com sub2.example.com 
