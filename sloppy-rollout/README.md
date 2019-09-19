@@ -1,4 +1,4 @@
-# 7val/sloppy-deployment
+# 7val/sloppy-rollout
 
 ![pulls](https://img.shields.io/docker/pulls/7val/sloppy-rollout.svg)
 ![size](https://images.microbadger.com/badges/image/7val/sloppy-rollout.svg)
@@ -6,6 +6,10 @@
 
 This image runs a deployment to Sloppy with the help of a provided configuration
 file. This can be either a "plain" JSON/YML file or a template.
+
+It just adds the deployment of plain files to `7val/sloppy-deployment`. But
+since the interface had to change in a way which is not backward-compatible this
+new image was created.
 
 ## Modes
 
