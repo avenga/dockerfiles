@@ -25,7 +25,10 @@ Opinionated conventions and best practices:
 * [7val/rancher-deployment]: Run a deployment to [Rancher][1] via generated
   `docker-compose.yml` and `rancher-compose.yml` files.
 * [7val/sloppy]: Provides the Slopp.io CLI in a container
-* [7val/sloppy-deployment]: Run a Sloppi.io deployment
+* [7val/sloppy-deployment]: Run a Sloppy.io deployment with the help of template
+  configuration and environment variables.
+* [7val/sloppy-rollout]: Enhances `7val/sloppy-deployment`. Plain JSON/YAML
+  files can be deployed too.
 * [7val/wordpress]: Wordpress image with some extras.
 
 ## Build

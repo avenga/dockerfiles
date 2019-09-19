@@ -1,5 +1,7 @@
 .PHONY: build push
 
+.EXPORT_ALL_VARIABLES:
+
 CI_REGISTRY ?= docker.io
 IMAGE_PREFIX ?= $(CI_REGISTRY)/7val/
 CURRENT_BRANCH ?= $(shell git symbolic-ref --short HEAD)
@@ -19,26 +21,22 @@ help:
 
 
 build:  ## Builds all changed images. `-e IMAGES="name"` builds single image.
-	@export HOST_PATH=$(HOST_PATH); \
-		docker-compose -f docker-compose.ops.yml build --force-rm --no-cache --pull \
+	@docker-compose -f docker-compose.ops.yml build --force-rm --no-cache --pull \
 		build-images
-	@export HOST_PATH=$(HOST_PATH); \
-		docker-compose -f docker-compose.ops.yml run --rm \
+	@docker-compose -f docker-compose.ops.yml run --rm \
 		-e IMAGE_PREFIX="$(IMAGE_PREFIX)" \
 		build-images
 
 # FIXME do not pull image! Or fail if image is not local!
 .PHONY: test
 test: ## Tests all changed images where tests exist. `-e IMAGES="name"` runs test for a single image.
-	@export HOST_PATH=$(HOST_PATH); \
-		docker-compose \
+	@docker-compose \
 		--log-level ERROR \
 		-f docker-compose.ops.yml \
 		build \
 		--force-rm \
 		test-images
-	@export HOST_PATH=$(HOST_PATH); \
-		docker-compose \
+	@docker-compose \
 		-f docker-compose.ops.yml \
 		--log-level ERROR \
 		run \
@@ -48,11 +46,9 @@ test: ## Tests all changed images where tests exist. `-e IMAGES="name"` runs tes
 	@make clean
 
 push: ## Pushes all changed images. `-e IMAGES="name"` pushes a single image.
-	@export HOST_PATH=$(HOST_PATH); \
-		docker-compose -f docker-compose.ops.yml build --force-rm --no-cache --pull \
+	@docker-compose -f docker-compose.ops.yml build --force-rm --no-cache --pull \
 		push-images
-	@export HOST_PATH=$(HOST_PATH); \
-		docker-compose -f docker-compose.ops.yml run --rm \
+	@docker-compose -f docker-compose.ops.yml run --rm \
 		-e IMAGE_PREFIX="$(IMAGE_PREFIX)" \
 		-e CURRENT_BRANCH="$(CURRENT_BRANCH)" \
 		-e ONLY_BRANCH="$(ONLY_BRANCH)" \
