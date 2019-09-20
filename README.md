@@ -93,3 +93,4 @@ All Bats files under `<imagename>/tests` are executed.
 [7val/sloppy]: https://cloud.docker.com/u/7val/repository/docker/7val/sloppy
 [7val/sloppy-deployment]: https://cloud.docker.com/u/7val/repository/docker/7val/sloppy-deployment
 [7val/wordpress]: https://cloud.docker.com/u/7val/repository/docker/7val/wordpress
+[7val/sloppy-rollout]: https://cloud.docker.com/u/7val/repository/docker/7val/sloppy-rollout
