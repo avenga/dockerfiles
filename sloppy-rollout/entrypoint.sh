@@ -5,6 +5,8 @@
 set -euo pipefail
 IFS=$'\n\t'
 
+# set default empty
+DRY_RUN="${DRY_RUN:-}"
 # In which mode should we run.
 SLOPPY_MODE="${SLOPPY_MODE}"
 # Name of the Sloppy configuration file which is used by sloppy change
