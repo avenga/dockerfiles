@@ -4,5 +4,6 @@ RUN apk add --quiet --no-progress --no-cache \
         socat \
         nmap \
         nmap-ncat \
+        bind-tools \
         curl
 
