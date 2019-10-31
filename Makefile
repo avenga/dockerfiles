@@ -59,9 +59,9 @@ clean:  ## Removes the Docker network from the test target.
 	@docker network rm test
 
 .PHONY: build-all
-build-all:
+build-all:  ## build all images
 	$(MAKE) build -e IMAGES="$(shell ls -l | awk '/^d/ { print $$NF }')"
 
 .PHONY: test-all
-test-all:
+test-all:  ## test all images
 	$(MAKE) test -e IMAGES="$(shell ls -l | awk '/^d/ { print $$NF }')"
