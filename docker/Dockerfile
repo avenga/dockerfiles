@@ -2,7 +2,7 @@ FROM koalaman/shellcheck-alpine:v0.6.0 as test
 COPY *.sh ./
 RUN find . -name "*.sh" | xargs shellcheck
 
-FROM docker:18.03.1-ce-git AS release
+FROM docker:19.03.3-ce-git AS release
 ENV WORKDIR=/work
 WORKDIR ${WORKDIR}
 VOLUME ${WORKDIR}
