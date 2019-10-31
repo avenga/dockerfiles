@@ -57,3 +57,11 @@ push: ## Pushes all changed images. `-e IMAGES="name"` pushes a single image.
 .PHONY: clean
 clean:  ## Removes the Docker network from the test target.
 	@docker network rm test
+
+.PHONY: build-all
+build-all:
+	$(MAKE) build -e IMAGES="$(shell ls -l | awk '/^d/ { print $$NF }')"
+
+.PHONY: test-all
+test-all:
+	$(MAKE) test -e IMAGES="$(shell ls -l | awk '/^d/ { print $$NF }')"
