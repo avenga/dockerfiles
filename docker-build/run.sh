@@ -21,9 +21,6 @@ if [[ -n "$DRY_RUN" ]]; then
     echo "$IMAGES"
     exit 0
 else
-    # Unique image tag based on commit date and commit hash:
-    VERSION=$(git show --quiet --format="%cd-%h" --date=short --abbrev=8)
-    COMMIT_HASH=$(git show --quiet --format="%h" --abbrev=8)
     BUILD_DATE=$(date -u +%FT%H:%M:%SZ)
 
     while IFS= read -r IMAGE_NAME
@@ -55,12 +52,9 @@ else
             --tag $TAG \\
             --tag $COMMIT_TAG \\
             --target $TARGET \\
-            --label org.label-schema.schema-version=\"1.0\" \\
-            --label org.label-schema.vendor=\"$LABEL_VENDOR\" \\
-            --label org.label-schema.vcs-url=\"$LABEL_VCS_URL\" \\
-            --label org.label-schema.vcs-ref=\"$COMMIT_HASH\" \\
-            --label org.label-schema.build-date=\"$BUILD_DATE\" \\
-            --label org.label-schema.name=\"$IMAGE_NAME\" \\
+            --label org.opencontainers.image.created=\"$BUILD_DATE\" \\
+            --label org.opencontainers.image.revision=\"$VERSION\" \\
+            --label org.opencontainers.image.url=\"$LABEL_VCS_URL\" \\
             $DOCKERFILE_FLAG \\
             $CONTEXT"
             echo "$COMMAND"

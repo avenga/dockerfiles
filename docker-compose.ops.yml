@@ -11,6 +11,7 @@ services:
       - IMAGES
       - CACHE
       - NO_PULL
+      - VERSION
     volumes:
       - .:/work
       - /var/run/docker.sock:/var/run/docker.sock
@@ -21,6 +22,7 @@ services:
     environment:
       - IMAGES
       - HOST_PATH
+      - VERSION
     volumes:
       - ${HOST_PATH}:/work
       - /var/run/docker.sock:/var/run/docker.sock

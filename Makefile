@@ -8,6 +8,8 @@ CURRENT_BRANCH ?= $(shell git symbolic-ref --short HEAD)
 ONLY_BRANCH ?= master
 # needed to mount files inside a container started inside a container
 HOST_PATH=$(shell pwd)
+# Unique image tag based on commit date and commit hash
+VERSION ?= $(shell git show --quiet --format="%cd-%H" --date=short)
 
 .PHONY: help
 help:

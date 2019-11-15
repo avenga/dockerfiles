@@ -8,7 +8,7 @@ _cleanup () {
     docker rm -f 7val-static
 }
 
-docker run -d --rm --name 7val-static --network test 7val/httpd-static
+docker run -d --rm --name 7val-static --network test "7val/httpd-static:$VERSION"
 trap _cleanup ERR EXIT
 
 sleep 1
