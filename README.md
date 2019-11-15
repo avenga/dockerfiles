@@ -79,6 +79,7 @@ prep-code takes care of this. The tests of the Wordpress image leverage this.
 All Bats files under `<imagename>/tests` are executed.
 
 
+
 [0]: https://github.com/sevenval/dockerfiles/blob/74ece293784680f18c89d4955a0881f93fd791f6/docker-build/run.sh#L8
 [7val/docker]: https://cloud.docker.com/u/7val/repository/docker/7val/docker
 [7val/docker-build]: https://cloud.docker.com/u/7val/repository/docker/7val/docker-build
