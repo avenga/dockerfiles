@@ -8,6 +8,13 @@ HOSTNAME=${HOSTNAME:-gitlab-runner}
 # Default RUNNER_NAME=HOSTNAME
 RUNNER_NAME=${RUNNER_NAME:-$HOSTNAME}
 
+# Unregister the runner
+function _unregister () {
+    local name="$1"
+    gitlab-runner unregister --name "$name"
+    exit 0
+}
+
 gitlab-runner verify --name "${RUNNER_NAME}"
 UNVERIFIED=$?
 if [[ $UNVERIFIED -eq 0 ]]; then
@@ -16,11 +23,17 @@ else
   echo "Delete unverified runners from config file."
   gitlab-runner verify --delete --name "${RUNNER_NAME}"
   echo "Unregister runner."
-  gitlab-runner unregister --name "${RUNNER_NAME}"
+  _unregister "$RUNNER_NAME"
   gitlab-runner register --non-interactive \
     --docker-volumes "/var/run/docker.sock:/var/run/docker.sock" \
     --docker-volumes "${CACHE_DIR}"
 fi
 
-# launch gitlab-runner passing all arguments
-exec gitlab-runner "$@"
+# gitlab-runner is stopped by SIGQUIT. Thus we catch that signal and unregister
+# the runner. That way there are no stale runners in Gitlab.
+trap '_unregister "$RUNNER_NAME"' SIGQUIT
+
+# Launch gitlab-runner passing all arguments. Since this script runs under
+# dumb-unit the runner doesn't have to run via "exec". Thus we can use above
+# "trap" command.
+gitlab-runner "$@"
