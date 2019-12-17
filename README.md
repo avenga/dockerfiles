@@ -78,6 +78,20 @@ prep-code takes care of this. The tests of the Wordpress image leverage this.
 
 All Bats files under `<imagename>/tests` are executed.
 
+## Development
+
+* Branches are always created from the master
+* Branch naming: `<image>/<short description of the change>`
+* PRs have the same name as the branch
+* per PR ony small changes
+
+0. update master
+1. create a branch from master
+2. make your changes
+3. build and test your changes
+4. commit, push and create PR
+5. Review required
+
 
 
 [0]: https://github.com/sevenval/dockerfiles/blob/74ece293784680f18c89d4955a0881f93fd791f6/docker-build/run.sh#L8
