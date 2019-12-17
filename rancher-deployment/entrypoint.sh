@@ -48,7 +48,9 @@ if [[ -n "$DRY_RUN" ]]; then
   cat "${RANCHER_COMPOSE_OUTPUT_FILE}"
 else
   echo "Upgrading $ENVIRONMENT ..."
-  # WARNING - never ever quote $SERVICE. rancher-cli doesn't seem to like it! TODO Why?
+  # WARNING - never ever quote $SERVICE. Most of the time $SERVICE is empty
+  #           since a hole stack is deployed. Thus if $SERVICE is quoted a
+  #           non-existing service with the name "" is probably deployed.
   # shellcheck disable=SC2086
   rancher up -f "${DOCKER_COMPOSE_OUTPUT_FILE}" --rancher-file "${RANCHER_COMPOSE_OUTPUT_FILE}" --upgrade --pull -d --force-upgrade --stack "$STACK" $SERVICE
   rancher --wait-state upgraded wait
