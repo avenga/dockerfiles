@@ -10,6 +10,8 @@ ONLY_BRANCH ?= master
 HOST_PATH=$(shell pwd)
 # Unique image tag based on commit date and commit hash
 VERSION ?= $(shell git show --quiet --format="%cd-%H" --date=short)
+CACHE_FLAG ?= --no-cache
+PULL_FLAG ?= --pull
 
 .PHONY: help
 help:
@@ -21,10 +23,13 @@ help:
 
 # TODO Add make traps for docker-compose
 
-
 build:  ## Builds all changed images. `-e IMAGES="name"` builds single image.
-	@docker-compose -f docker-compose.ops.yml build --force-rm --no-cache --pull \
+	@docker-compose -f docker-compose.ops.yml build \
+		${CACHE_FLAG} \
+		${PULL_FLAG} \
+		--force-rm \
 		build-images
+
 	@docker-compose -f docker-compose.ops.yml run --rm \
 		-e IMAGE_PREFIX="$(IMAGE_PREFIX)" \
 		build-images
@@ -48,7 +53,10 @@ test: ## Tests all changed images where tests exist. `-e IMAGES="name"` runs tes
 	@make clean
 
 push: ## Pushes all changed images. `-e IMAGES="name"` pushes a single image.
-	@docker-compose -f docker-compose.ops.yml build --force-rm --no-cache --pull \
+	@docker-compose -f docker-compose.ops.yml build \
+		${CACHE_FLAG} \
+		${PULL_FLAG} \
+		--force-rm \
 		push-images
 	@docker-compose -f docker-compose.ops.yml run --rm \
 		-e IMAGE_PREFIX="$(IMAGE_PREFIX)" \
