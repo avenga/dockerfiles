@@ -16,7 +16,6 @@ services:
       - .:/work
       - /var/run/docker.sock:/var/run/docker.sock
 
-
   test-images:
     image: 7val/docker-test
     environment:

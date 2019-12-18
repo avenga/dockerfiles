@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment
+  labels:
+    project: {{ .Env.PROJECT }}
+spec:
+  replicas: {{ .Env.APP_SCALE }}
+  selector:
+    matchLabels:
+      project: {{ .Env.PROJECT }}
+  template:
+    metadata:
+      labels:
+        project: {{ .Env.PROJECT }}
+    spec:
+      containers:
+      - name: frontend
+        image: {{ .Env.APP_IMAGE }}:{{.Env.APP_VERSION}}
+        ports:
+          - containerPort: {{ .Env.APP_PORT }}
+        livenessProbe:
+          initialDelaySeconds: 2
+          periodSeconds: 5
+          httpGet:
+            path: /
+            port: {{ .Env.APP_PORT }}
