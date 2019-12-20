@@ -1,4 +1,6 @@
 FROM rancher/cli2 AS release
+ARG DEPLOYMENT_TEMPLATE_FILE="deployment.tmpl.yml"
+ENV DEPLOYMENT_TEMPLATE_FILE=${DEPLOYMENT_TEMPLATE_FILE}
 
 COPY --from=hairyhenderson/gomplate:alpine /bin/gomplate /bin/gomplate
 
@@ -7,6 +9,6 @@ RUN apk add --quiet --no-progress --no-cache bash curl \
     && chmod +x /usr/local/bin/kubectl
 VOLUME /environments
 WORKDIR /work
-COPY entrypoint.sh .
-ENTRYPOINT ["entrypoint.sh"]
-ONBUILD COPY deployment.yml
+COPY entrypoint.sh ./
+ENTRYPOINT ["./entrypoint.sh"]
+ONBUILD COPY ${DEPLOYMENT_TEMPLATE_FILE} ./
