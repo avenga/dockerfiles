@@ -48,8 +48,8 @@ With the following variables the behaviour can be changed.
 
 * `RANCHER2_DEPLOYMENT_TRACE`: Enables trace mode when set to any value. See
   `help set` in Bash. Default: off
-* `DRY_RUN`: Don't anything except print the parsed k8s configuration to STDOUT.
-  Activate by setting to any value. Default: off
+* `DRY_RUN`: Don't do anything except print the parsed k8s configuration to
+  STDOUT.  Activate by setting to any value. Default: off
 * `RANCHER_SAVE_OUTPUT_DIR`: Name of the directory (should be a host volume) to
   where a copy of the rendered K8s configuration is saved. Name of the file is
   `deployment.yml`.
