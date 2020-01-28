@@ -3,25 +3,34 @@
 # When set trace mode is activated. See `help set` in Bash.
 [[ "$RANCHER2_DEPLOYMENT_TRACE" ]] && set -x
 
-# Bash Strict Mode, s. http://redsymbol.net/articles/unofficial-bash-strict-mode/
+# Bash Strict Mode
+# - Exit immediately if a command exits with a non-zero status.
+# - fails if a command fails at any part of a pipeline
+# - Treat unset variables as an error when substituting.
+# - IFS: word splitting is done by <newline> and <tab>, WITHOUT <space>.
+# For more details s. `help set`, `man bash | less -p '   IFS '` and
+# http://redsymbol.net/articles/unofficial-bash-strict-mode/
 set -euo pipefail
 IFS=$'\n\t'
 
 ###############################################################################
 ### define/initialize script wide variables
 
+# This programs name without any leading slashes (i.e same as basename).
 PROGNAME="${0##*/}"
+# Name of the resulting K8s YAML file which gomplate will create.
 OUTPUT_FILE="./deployment.yml"
-# Make a dry run
+# If set, make a dry run
 DRY_RUN="${DRY_RUN:-}"
 # No Rancher login and do not fetch pod infos:
 NO_LOGIN="${NO_LOGIN:-}"
-
+# Define the Rancher2 project name. When not set the value of PROJECT is used.
 RANCHER_PROJECT="${RANCHER_PROJECT:-$PROJECT}"
-# Use $PROJECT as prefix to have unique namespaces inside Rancher2:
+# Use RANCHER_PROJECT as prefix and ENVIRONMENT as suffix to have unique
+# namespaces inside Rancher2
 RANCHER_NAMESPACE="$(echo "${RANCHER_PROJECT}-${ENVIRONMENT}" | tr '[:upper:]' '[:lower:]')"
 # Name of the directory (should be a host volume) to where a copy of
-# $OUTPUT_FILE is saved.
+# $OUTPUT_FILE is saved. The copy/backup is only done when this variable is set.
 RANCHER_SAVE_OUTPUT_DIR="${RANCHER_SAVE_OUTPUT_DIR:-}"
 # When set it turns off printing the difference between new and current
 # configuration to STDOUT.
@@ -29,7 +38,7 @@ RANCHER_NO_DIFF="${RANCHER_NO_DIFF:-}"
 
 ################################################################################
 ### functions
-# when echoing use "${FUNCNAME[0]}: message"
+# when echoing from functions use "${FUNCNAME[0]}: message"
 
 # echo to STDERR
 function _err_echo () {
