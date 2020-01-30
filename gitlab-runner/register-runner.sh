@@ -12,7 +12,6 @@ RUNNER_NAME=${RUNNER_NAME:-$HOSTNAME}
 function _unregister () {
     local name="$1"
     gitlab-runner unregister --name "$name"
-    exit 0
 }
 
 gitlab-runner verify --name "${RUNNER_NAME}"
