@@ -14,6 +14,9 @@ PROGNAME="${0##*/}"
 OUTPUT_FILE="./deployment.yml"
 # Make a dry run
 DRY_RUN="${DRY_RUN:-}"
+# No Rancher login and do not fetch pod infos:
+NO_LOGIN="${NO_LOGIN:-}"
+
 RANCHER_PROJECT="${RANCHER_PROJECT:-$PROJECT}"
 # Use $PROJECT as prefix to have unique namespaces inside Rancher2:
 RANCHER_NAMESPACE="$(echo "${RANCHER_PROJECT}-${ENVIRONMENT}" | tr '[:upper:]' '[:lower:]')"
@@ -47,15 +50,15 @@ function _bail () {
 echo "Deploy ${RANCHER_PROJECT} to ${RANCHER_NAMESPACE}"
 mkdir -p "/environments/${ENVIRONMENT}"
 
-if [[ -z $DRY_RUN ]] ; then
-    rancher login "$RANCHER_SERVER_URL" --token "$RANCHER_BEARER_TOKEN" --context "$RANCHER_CONTEXT"
+if [[ -z $NO_LOGIN ]] ; then
+    rancher login "${RANCHER_SERVER_URL}" --token "${RANCHER_BEARER_TOKEN}" --context "${RANCHER_CONTEXT}"
 
-    rancher context switch "$RANCHER_CONTEXT"
+    rancher context switch "${RANCHER_CONTEXT}"
 
     if rancher namespace ls --format '{{.Namespace.Name}}' | grep -q "^${RANCHER_NAMESPACE}$" ; then
-        echo "Namespace $RANCHER_NAMESPACE already exists."
+        echo "Namespace ${RANCHER_NAMESPACE} already exists."
     else
-        rancher namespace create "$RANCHER_NAMESPACE"
+        rancher namespace create "${RANCHER_NAMESPACE}"
     fi
 
     # Save the current k8s containers of the namespace and their docker image names to local file system.
