@@ -6,4 +6,5 @@ services:
       service: deploy-test
     environment:
       DRY_RUN: 1
+      NO_LOGIN: 1
       PROJECT: Testproject

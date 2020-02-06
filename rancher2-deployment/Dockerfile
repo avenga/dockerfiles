@@ -11,6 +11,9 @@ ENV PROJECT=""
 # Mandatory environment name:
 ENV ENVIRONMENT=""
 
+# Set to anything but empty to not login to rancher:
+ENV NO_LOGIN=""
+
 COPY --from=hairyhenderson/gomplate:alpine /bin/gomplate /bin/gomplate
 
 RUN apk add --quiet --no-progress --no-cache bash curl \
