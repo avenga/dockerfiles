@@ -55,7 +55,13 @@ if [[ -z $NO_LOGIN ]] ; then
 
     rancher context switch "${RANCHER_CONTEXT}"
 
-    if rancher namespace ls --format '{{.Namespace.Name}}' | grep -q "^${RANCHER_NAMESPACE}$" ; then
+    echo "Check if namespace ${RANCHER_NAMESPACE} exists..."
+    set +e
+    rancher kubectl get namespace "${RANCHER_NAMESPACE}"
+    set -e
+
+    # Check if last command was successful:
+    if [[ $? -eq 0 ]] ; then
         echo "Namespace ${RANCHER_NAMESPACE} already exists."
     else
         rancher namespace create "${RANCHER_NAMESPACE}"
