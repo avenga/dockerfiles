@@ -16,7 +16,8 @@ IFS=$'\n\t'
 ###############################################################################
 ### define/initialize script wide variables
 
-# This programs name without any leading slashes (i.e same as basename).
+# This programs name without any leading slashes (i.e similar to basename, s.
+# `man 1 basename`).
 PROGNAME="${0##*/}"
 # Name of the resulting K8s YAML file which gomplate will create.
 OUTPUT_FILE="./deployment.yml"
