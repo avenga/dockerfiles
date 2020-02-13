@@ -16,7 +16,7 @@ ENV RANCHER_CONTEXT=""
 # Sets the project name. Must be the name of the Rancher2 project. The value
 # is used together with the value of ENVIRONMENT to construct the name of the
 # K8s namespace.
-ENV PROJECT
+ENV PROJECT=""
 
 # Optional. Overrides PROJECT.
 ENV RANCHER_PROJECT=""
