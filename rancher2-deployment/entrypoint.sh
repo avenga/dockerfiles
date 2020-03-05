@@ -48,7 +48,9 @@ function _bail () {
 ### main script
 
 echo "Deploy ${RANCHER_PROJECT} to ${RANCHER_NAMESPACE}"
-mkdir -p "/environments/${ENVIRONMENT}"
+
+echo "Create ${CI_PROJECT_DIR}/environments/${ENVIRONMENT} if not present"
+mkdir -p "${CI_PROJECT_DIR}/environments/${ENVIRONMENT}"
 
 if [[ -z $NO_LOGIN ]] ; then
     rancher login "${RANCHER_SERVER_URL}" --token "${RANCHER_BEARER_TOKEN}" --context "${RANCHER_CONTEXT}"
@@ -71,13 +73,13 @@ if [[ -z $NO_LOGIN ]] ; then
     # This file could then processed in the project-specific template file to deploy only specific changes.
     rancher kubectl get pods --namespace "${RANCHER_NAMESPACE}" \
         -o go-template \
-        --template='{{range .items}}{{range .spec.containers}}{{printf "%s: %s\n" .name .image}}{{end}}{{end}}' > "/environments/${ENVIRONMENT}/services.yml"
+        --template='{{range .items}}{{range .spec.containers}}{{printf "%s: %s\n" .name .image}}{{end}}{{end}}' > "${CI_PROJECT_DIR}/environments/${ENVIRONMENT}/services.yml"
 fi
 
 # Generate a k8s yml file to describe a project's k8s resources.
 gomplate -f "/work/${DEPLOYMENT_TEMPLATE_FILE}" \
-  -d environment="file:///environments/${ENVIRONMENT}/" \
-  -d globals="file:///environments/" \
+  -d environment="file://${CI_PROJECT_DIR}/environments/${ENVIRONMENT}/" \
+  -d globals="file://${CI_PROJECT_DIR}/environments/" \
   -o "${OUTPUT_FILE}"
 
 # Save generated k8s yml file to a specific directory:
