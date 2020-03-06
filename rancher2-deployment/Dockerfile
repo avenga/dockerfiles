@@ -14,6 +14,9 @@ ENV ENVIRONMENT=""
 # Set to anything but empty to not login to rancher:
 ENV NO_LOGIN=""
 
+# Used to mount build volumes in GitLab CI pipeline:
+ENV CI_PROJECT_DIR=""
+
 COPY --from=hairyhenderson/gomplate:alpine /bin/gomplate /bin/gomplate
 
 RUN apk add --quiet --no-progress --no-cache bash curl \
