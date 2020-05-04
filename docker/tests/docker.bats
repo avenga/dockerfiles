@@ -8,5 +8,5 @@
     run docker run --rm "7val/docker:$VERSION" -c 'docker --version'
     echo "$output"
     [[ $status -eq 0 ]]
-    [[ $output =~ version\ 19.03.5 ]]
+    [[ $output =~ version\ 19.03.8 ]]
 }
