@@ -1,4 +1,4 @@
-# 7val/http-static
+# 7val/httpd-static
 
 ![pulls](https://img.shields.io/docker/pulls/7val/httpd-static.svg)
 ![size](https://images.microbadger.com/badges/image/7val/httpd-static.svg)
