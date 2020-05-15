@@ -16,6 +16,7 @@ Opinionated conventions and best practices:
 * [7val/gitlab-job]: Execute jobs in the Gitlab runner.
 * [7val/gitlab-runner]: A gitlab-runner with automatic registration.
 * [7val/httpd-static]: Simple http server for static files.
+* [7val/kubectl]: Kubectl in a container.
 * [7val/net-tools]: Image with networking tools.
 * [7val/nodejs-javascript-app]: Opinionated docker image to run production-ready
   nodejs apps written in javascript.
@@ -101,6 +102,7 @@ All Bats files under `<imagename>/tests` are executed.
 [7val/gitlab-job]: https://cloud.docker.com/u/7val/repository/docker/7val/gitlab-job
 [7val/gitlab-runner]: https://cloud.docker.com/u/7val/repository/docker/7val/gitlab-runner
 [7val/httpd-static]: https://cloud.docker.com/u/7val/repository/docker/7val/httpd-static
+[7val/kubectl]: https://cloud.docker.com/u/7val/repository/docker/7val/kubectl
 [7val/nodejs-javascript-app]: https://cloud.docker.com/u/7val/repository/docker/7val/nodejs-javascript-app
 [7val/nodejs-javascript-builder]: https://cloud.docker.com/u/7val/repository/docker/7val/nodejs-javascript-builder
 [7val/nodejs-runner]: https://cloud.docker.com/u/7val/repository/docker/7val/nodejs-runner
