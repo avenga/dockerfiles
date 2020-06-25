@@ -1,8 +1,8 @@
-# 7val/sloppy-deployment
+# avenga/sloppy-deployment
 
-![pulls](https://img.shields.io/docker/pulls/7val/sloppy-deployment.svg)
-![size](https://images.microbadger.com/badges/image/7val/sloppy-deployment.svg)
-[![commit](https://images.microbadger.com/badges/commit/7val/sloppy.svg)](https://microbadger.com/images/7val/sloppy-deployment)
+![pulls](https://img.shields.io/docker/pulls/avenga/sloppy-deployment.svg)
+![size](https://images.microbadger.com/badges/image/avenga/sloppy-deployment.svg)
+[![commit](https://images.microbadger.com/badges/commit/avenga/sloppy.svg)](https://microbadger.com/images/avenga/sloppy-deployment)
 
 Run a deployment to Sloppy via `sloppy.yml`. It generates a `sloppy.yml` from a
 Gomplate template file. The template file is copied ONBUILD with the name

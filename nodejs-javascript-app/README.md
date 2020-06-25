@@ -1,8 +1,8 @@
-# Sevenval nodejs-javascript-app
+# avenga/nodejs-javascript-app
 
-![pulls](https://img.shields.io/docker/pulls/7val/nodejs-javascript-app.svg)
-![size](https://images.microbadger.com/badges/image/7val/nodejs-javascript-app.svg)
-[![commit](https://images.microbadger.com/badges/commit/7val/nodejs-javascript-app.svg)](https://microbadger.com/images/7val/nodejs-javascript-app)
+![pulls](https://img.shields.io/docker/pulls/avenga/nodejs-javascript-app.svg)
+![size](https://images.microbadger.com/badges/image/avenga/nodejs-javascript-app.svg)
+[![commit](https://images.microbadger.com/badges/commit/avenga/nodejs-javascript-app.svg)](https://microbadger.com/images/avenga/nodejs-javascript-app)
 
 Opinionated docker image to run production-ready nodejs apps written in javascript.
 Only used as a stage in a [multi-stage][1] build.
@@ -13,9 +13,9 @@ See [nodejs-javascript-hello][2] as an example.
 ## Usage
 
 ```Dockerfile
-FROM 7val/nodejs-javascript-builder:latest AS build
-FROM 7val/nodejs-javascript-app:latest AS release
+FROM avenga/nodejs-javascript-builder:latest AS build
+FROM avenga/nodejs-javascript-app:latest AS release
 ```
 
 [1]: https://docs.docker.com/develop/develop-images/multistage-build/
-[2]: https://github.com/sevenval/dockerfiles/tree/master/nodejs-javascript-hello
+[2]: https://github.com/avenga/dockerfiles/tree/master/nodejs-javascript-hello

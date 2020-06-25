@@ -5,14 +5,14 @@ set -euo pipefail
 IFS=$'\n\t'
 
 _cleanup () {
-    docker rm -f 7val-static
+    docker rm -f avenga-static
 }
 
-docker run -d --rm --name 7val-static --network test "7val/httpd-static:$VERSION"
+docker run -d --rm --name avenga-static --network test "avenga/httpd-static:$VERSION"
 trap _cleanup ERR EXIT
 
 sleep 1
 
-MY_IP="$(docker inspect 7val-static | jq -r '.[0].NetworkSettings.Networks.test.IPAddress')"
+MY_IP="$(docker inspect avenga-static | jq -r '.[0].NetworkSettings.Networks.test.IPAddress')"
 export MY_IP
 bats --tap ./tests

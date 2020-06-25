@@ -25,15 +25,15 @@ script:
   # stop immediately if there's a failure
   - set -e
   # build docker images:
-  - make build
+  - make build -e IMAGE_PREFIX="docker.io/7val"
   - make build -e IMAGE_PREFIX="docker.io/avenga"
   # run tests when available
   - make test
   # push docker images to registry if master branch:
-  - make push -e CURRENT_BRANCH="$BRANCH" -e ONLY_BRANCH="master"
+  - make push -e CURRENT_BRANCH="$BRANCH" -e ONLY_BRANCH="master" -e IMAGE_PREFIX="docker.io/7val"
   - make push -e CURRENT_BRANCH="$BRANCH" -e ONLY_BRANCH="master" -e IMAGE_PREFIX="docker.io/avenga"
   - > 
     if [ "$TRAVIS_EVENT_TYPE" == "cron" ]; then 
-    make build-all test-all push-all -e CURRENT_BRANCH="$BRANCH" -e ONLY_BRANCH="master";
+    make build-all test-all push-all -e CURRENT_BRANCH="$BRANCH" -e ONLY_BRANCH="master" -e IMAGE_PREFIX="docker.io/7val";
     make build-all test-all push-all -e CURRENT_BRANCH="$BRANCH" -e ONLY_BRANCH="master" -e IMAGE_PREFIX="docker.io/avenga";
     fi

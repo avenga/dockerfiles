@@ -2,7 +2,7 @@ FROM koalaman/shellcheck-alpine:v0.6.0 as test
 COPY *.sh ./
 RUN find . -name "*.sh" | xargs shellcheck
 
-FROM 7val/docker AS release
+FROM avenga/docker AS release
 #
 # DEFAULTS
 #

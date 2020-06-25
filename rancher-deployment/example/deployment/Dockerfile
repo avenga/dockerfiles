@@ -1,1 +1,1 @@
-FROM 7val/rancher-deployment:latest
+FROM avenga/rancher-deployment:latest

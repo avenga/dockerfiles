@@ -1,8 +1,8 @@
-# 7val/rancher-deployment
+# avenga/rancher-deployment
 
-![pulls](https://img.shields.io/docker/pulls/7val/rancher-deployment.svg)
-![size](https://images.microbadger.com/badges/image/7val/rancher-deployment.svg)
-[![commit](https://images.microbadger.com/badges/commit/7val/rancher-deployment.svg)](https://microbadger.com/images/7val/rancher-deployment)
+![pulls](https://img.shields.io/docker/pulls/avenga/rancher-deployment.svg)
+![size](https://images.microbadger.com/badges/image/avenga/rancher-deployment.svg)
+[![commit](https://images.microbadger.com/badges/commit/avenga/rancher-deployment.svg)](https://microbadger.com/images/avenga/rancher-deployment)
 
 Run a deployment to [Rancher][1] via generated `docker-compose.yml` and
 `rancher-compose.yml` files.  It generates these files based on Go's
@@ -36,7 +36,7 @@ You can use this image as a replacement for the rancher cli tool.
 E.g.:
 ```bash
 docker run -it --rm --entrypoint /usr/bin/rancher -v "$HOME/.rancher":/rancher \
-    7val/rancher-deployment --config /rancher/cli.json <your options>
+    avenga/rancher-deployment --config /rancher/cli.json <your options>
 ```
 
 [1]: https://rancher.com/docs/rancher/v1.6/en/

@@ -1,11 +1,11 @@
 @test "-c env" {
-    run docker run --rm --entrypoint /bin/bash "7val/rancher2-deployment:$VERSION" -c env
+    run docker run --rm --entrypoint /bin/bash "avenga/rancher2-deployment:$VERSION" -c env
     echo "$output"
     [[ $status -eq 0 ]]
     [[ $output =~ "DEPLOYMENT_TEMPLATE_FILE=deployment.tmpl.yml" ]]
 }
 @test "rancher version" {
-    run docker run --rm --entrypoint /bin/bash "7val/rancher2-deployment:$VERSION" -c rancher --version
+    run docker run --rm --entrypoint /bin/bash "avenga/rancher2-deployment:$VERSION" -c rancher --version
     echo "$output"
     [[ $status -eq 0 ]]
     [[ $output =~ Version:\ v2.3.2 ]]

@@ -3,7 +3,7 @@
 .EXPORT_ALL_VARIABLES:
 
 CI_REGISTRY ?= docker.io
-IMAGE_PREFIX ?= $(CI_REGISTRY)/7val/
+IMAGE_PREFIX ?= $(CI_REGISTRY)/avenga/
 CURRENT_BRANCH ?= $(shell git symbolic-ref --short HEAD)
 ONLY_BRANCH ?= master
 # needed to mount files inside a container started inside a container

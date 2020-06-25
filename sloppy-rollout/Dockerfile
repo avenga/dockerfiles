@@ -1,4 +1,4 @@
-FROM 7val/sloppy as release
+FROM avenga/sloppy as release
 ENV SLOPPY_APITOKEN=""
 # If templating is used, files from this environment are used.
 ENV TEMPLATE_ENVIRONMENT=""

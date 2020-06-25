@@ -42,7 +42,7 @@ docker-compose up -d --build --force-recreate
 trap _cleanup ERR EXIT
 
 sleep 20
-MY_IP="$(docker inspect 7val-wp | jq -r '.[0].NetworkSettings.Networks.test.IPAddress')"
+MY_IP="$(docker inspect avenga-wp | jq -r '.[0].NetworkSettings.Networks.test.IPAddress')"
 export MY_IP
 bats --tap ./tests
 

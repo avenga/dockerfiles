@@ -1,8 +1,8 @@
-# 7val/docker-build
+# avenga/docker-build
 
-![pulls](https://img.shields.io/docker/pulls/7val/docker-build.svg)
-![size](https://images.microbadger.com/badges/image/7val/docker-build.svg)
-[![commit](https://images.microbadger.com/badges/commit/7val/docker-build.svg)](https://microbadger.com/images/7val/docker-build)
+![pulls](https://img.shields.io/docker/pulls/avenga/docker-build.svg)
+![size](https://images.microbadger.com/badges/image/avenga/docker-build.svg)
+[![commit](https://images.microbadger.com/badges/commit/avenga/docker-build.svg)](https://microbadger.com/images/avenga/docker-build)
 
 Build docker images inside docker to make sure to use the same docker version and to set specific labels.
 
@@ -15,5 +15,5 @@ The `Dockerfile` must have at least one `FROM ... AS release` line to support mu
 Example:
 
 ```bash
-docker run --rm -v $PWD:/work -v /var/run/docker.sock:/var/run/docker.sock -e IMAGES="nodejs-runner sloppy" 7val/docker-build
+docker run --rm -v $PWD:/work -v /var/run/docker.sock:/var/run/docker.sock -e IMAGES="nodejs-runner sloppy" avenga/docker-build
 ```

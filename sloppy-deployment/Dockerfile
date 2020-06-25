@@ -1,4 +1,4 @@
-FROM 7val/sloppy:1.13.1 as release
+FROM avenga/sloppy:1.13.1 as release
 ARG SLOPPY_TEMPLATE_FILE="sloppy.tmpl.yml"
 ENV SLOPPY_TEMPLATE_FILE=${SLOPPY_TEMPLATE_FILE}
 ENV SLOPPY_APITOKEN=""

@@ -10,7 +10,7 @@ services:
       VAULT_DEV_LISTEN_ADDRESS: 0.0.0.0:8200
 
   push-secrets:
-    image: 7val/vault-push
+    image: avenga/vault-push
     depends_on:
       - vault
     environment:

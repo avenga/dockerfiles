@@ -1,4 +1,4 @@
-FROM 7val/wordpress
+FROM avenga/wordpress
 COPY plugins /var/files/plugins
 COPY themes /var/files/themes
 # symlink read-only files into the /var/www/html volume

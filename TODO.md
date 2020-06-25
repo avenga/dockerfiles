@@ -5,7 +5,7 @@
   the just build images
 // switch to opencontainer labels
 // !!!! make `--pull` the default in `docker-build/run.sh`
-* gitlab-job might use 7val/docker as base
+* gitlab-job might use avenga/docker as base
 * some tests build the images by themselves
 
 
