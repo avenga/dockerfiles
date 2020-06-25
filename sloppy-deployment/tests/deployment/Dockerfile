@@ -1,1 +1,1 @@
-FROM 7val/sloppy-deployment:latest
+FROM avenga/sloppy-deployment:latest

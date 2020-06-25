@@ -1,4 +1,4 @@
-ARG  IMAGE_PREFIX="7val/"
+ARG  IMAGE_PREFIX="avenga/"
 FROM ${IMAGE_PREFIX}nodejs-runner:latest AS release
 ONBUILD COPY --from=build /app/package.json ./
 ONBUILD COPY --from=build /app/src ./src

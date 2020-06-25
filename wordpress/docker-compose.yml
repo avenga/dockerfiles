@@ -2,7 +2,7 @@ version: '2.3'
 services:
 
   wordpress:
-    container_name: 7val-wp
+    container_name: avenga-wp
     extends:
       file: example/docker-compose.yml
       service: wordpress

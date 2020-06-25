@@ -1,8 +1,8 @@
 # kubectl in Docker
 
-![pulls](https://img.shields.io/docker/pulls/7val/kubectl.svg)
-![size](https://images.microbadger.com/badges/image/7val/kubectl.svg)
-[![commit](https://images.microbadger.com/badges/commit/7val/kubectl.svg)](https://microbadger.com/images/7val/kubectl)
+![pulls](https://img.shields.io/docker/pulls/avenga/kubectl.svg)
+![size](https://images.microbadger.com/badges/image/avenga/kubectl.svg)
+[![commit](https://images.microbadger.com/badges/commit/avenga/kubectl.svg)](https://microbadger.com/images/avenga/kubectl)
 
 Can run any kubectl command. Contains the latest version of kubectl and is based
 on the debian:stable-slim image.

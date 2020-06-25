@@ -1,4 +1,4 @@
-ARG IMAGE_PREFIX="7val/"
+ARG IMAGE_PREFIX="avenga/"
 FROM ${IMAGE_PREFIX}nodejs-runner:latest AS release
 ENV YARN_VERSION="1.15.0"
 RUN wget -O /yarn.js https://github.com/yarnpkg/yarn/releases/download/v${YARN_VERSION}/yarn-${YARN_VERSION}.js

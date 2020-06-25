@@ -1,8 +1,8 @@
-# 7val/wordpress
+# avenga/wordpress
 
-![pulls](https://img.shields.io/docker/pulls/7val/wordpress.svg)
-![size](https://images.microbadger.com/badges/image/7val/wordpress.svg)
-[![commit](https://images.microbadger.com/badges/commit/7val/sloppy.svg)](https://microbadger.com/images/7val/wordpress)
+![pulls](https://img.shields.io/docker/pulls/avenga/wordpress.svg)
+![size](https://images.microbadger.com/badges/image/avenga/wordpress.svg)
+[![commit](https://images.microbadger.com/badges/commit/avenga/sloppy.svg)](https://microbadger.com/images/avenga/wordpress)
 
 ## Usage
 
@@ -11,7 +11,7 @@
 * Create a `Dockerfile` in your project with the content:
 
 ```
-FROM 7val/wordpress
+FROM avenga/wordpress
 COPY plugins /var/files/plugins
 COPY themes /var/files/themes
 # For every plugin/theme in your project do:

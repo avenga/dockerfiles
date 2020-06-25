@@ -17,7 +17,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
 
   test-images:
-    image: 7val/docker-test
+    image: avenga/docker-test
     environment:
       - IMAGES
       - HOST_PATH

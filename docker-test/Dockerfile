@@ -1,4 +1,4 @@
-FROM 7val/docker AS release
+FROM avenga/docker AS release
 
 # Install bats-core and other requirements
 COPY --from=bats/bats:latest /opt/bats /opt/bats

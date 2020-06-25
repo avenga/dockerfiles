@@ -1,4 +1,4 @@
-# Sevenval nodejs-javascript-hello
+# avenga/nodejs-javascript-hello
 
 Example app with multi-stage builds and integration tests.
 

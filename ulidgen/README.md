@@ -1,4 +1,4 @@
-# 7val/ulidgen
+# avenga/ulidgen
 
 CLI utility to generate an ULID
 
@@ -7,5 +7,5 @@ Code: https://github.com/groob/ulidgen
 
 ## Usage
 ```bash
-docker run 7val/ulidgen
+docker run avenga/ulidgen
 ```

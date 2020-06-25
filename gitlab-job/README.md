@@ -1,13 +1,13 @@
-# 7val/gitlab-job
+# avenga/gitlab-job
 
-![pulls](https://img.shields.io/docker/pulls/7val/gitlab-job.svg)
-![size](https://images.microbadger.com/badges/image/7val/gitlab-job.svg)
-[![commit](https://images.microbadger.com/badges/commit/7val/gitlab-job.svg)](https://microbadger.com/images/7val/gitlab-job)
+![pulls](https://img.shields.io/docker/pulls/avenga/gitlab-job.svg)
+![size](https://images.microbadger.com/badges/image/avenga/gitlab-job.svg)
+[![commit](https://images.microbadger.com/badges/commit/avenga/gitlab-job.svg)](https://microbadger.com/images/avenga/gitlab-job)
 
 Used in `.gitlab-ci.yml` to specify a Docker image to use for the gitlab job:
 
 ```yml
-image: 7val/gitlab-job
+image: avenga/gitlab-job
 
 services:
   - docker:dind

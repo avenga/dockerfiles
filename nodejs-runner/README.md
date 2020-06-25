@@ -1,8 +1,8 @@
-# Sevenval nodejs-runner
+# avenga/nodejs-runner
 
-![pulls](https://img.shields.io/docker/pulls/7val/nodejs-runner.svg)
-![size](https://images.microbadger.com/badges/image/7val/nodejs-runner.svg)
-[![commit](https://images.microbadger.com/badges/commit/7val/nodejs-runner.svg)](https://microbadger.com/images/7val/nodejs-runner)
+![pulls](https://img.shields.io/docker/pulls/avenga/nodejs-runner.svg)
+![size](https://images.microbadger.com/badges/image/avenga/nodejs-runner.svg)
+[![commit](https://images.microbadger.com/badges/commit/avenga/nodejs-runner.svg)](https://microbadger.com/images/avenga/nodejs-runner)
 
 Opinionated docker image to act as nodejs runtime only.
 
@@ -11,6 +11,6 @@ Opinionated docker image to act as nodejs runtime only.
 As base image for nodejs apps.
 
 ```Dockerfile
-FROM 7val/nodejs-runner:latest AS release
+FROM avenga/nodejs-runner:latest AS release
 ...
 ```
