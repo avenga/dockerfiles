@@ -32,3 +32,8 @@ script:
   # push docker images to registry if master branch:
   - make push -e CURRENT_BRANCH="$BRANCH" -e ONLY_BRANCH="master"
   - make push -e CURRENT_BRANCH="$BRANCH" -e ONLY_BRANCH="master" -e IMAGE_PREFIX="docker.io/avenga"
+  - > 
+    if [ "$TRAVIS_EVENT_TYPE" == "cron" ]; then 
+    make build-all test-all push-all -e CURRENT_BRANCH="$BRANCH" -e ONLY_BRANCH="master";
+    make build-all test-all push-all -e CURRENT_BRANCH="$BRANCH" -e ONLY_BRANCH="master" -e IMAGE_PREFIX="docker.io/avenga";
+    fi
