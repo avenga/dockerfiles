@@ -75,3 +75,7 @@ build-all:  ## build all images
 .PHONY: test-all
 test-all:  ## test all images
 	$(MAKE) test -e IMAGES="$(shell ls -l | awk '/^d/ { print $$NF }')"
+
+.PHONY: push-all
+push-all:  ## force push all images
+	$(MAKE) push -e IMAGES="$(shell ls -l | awk '/^d/ { print $$NF }')"
