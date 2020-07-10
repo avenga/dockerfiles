@@ -8,7 +8,7 @@
     run docker run --rm --entrypoint /bin/bash "avenga/rancher2-deployment:$VERSION" -c rancher --version
     echo "$output"
     [[ $status -eq 0 ]]
-    [[ $output =~ Version:\ v2.3.2 ]]
+    [[ $output =~ Version:\ v2 ]]
 }
 
 @test "dry run" {

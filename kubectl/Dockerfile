@@ -1,15 +1,12 @@
-FROM debian:stable-slim AS release
-
-# Install latest version of kubectl
-RUN apt-get -qqq update \
-    && apt-get install -qqq -y apt-transport-https gnupg2 curl \
-    && curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add - \
-    && echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" >> /etc/apt/sources.list.d/kubernetes.list \
-    && apt-get -qqqq update \
-    && apt-get install -y -qqqq kubectl \
-    && apt-get clean -y \
-    && rm -rf /var/lib/apt
+FROM alpine:latest AS release
+RUN apk --quiet --no-progress --no-cache add bash curl
+RUN curl -LO \
+  https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl \
+  && chmod +x ./kubectl \
+  && mv ./kubectl /usr/local/bin/kubectl
+# test kubectl installation:
+RUN kubectl version --client
 # install and configure entrypoint
-ADD entrypoint.sh /
+COPY entrypoint.sh /
 RUN chmod +x /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]

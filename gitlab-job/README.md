@@ -8,12 +8,9 @@ Used in `.gitlab-ci.yml` to specify a Docker image to use for the gitlab job:
 
 ```yml
 image: avenga/gitlab-job
-
-services:
-  - docker:dind
-
 ...
 ```
+
 See https://docs.gitlab.com/ce/ci/yaml/#image for more infos.
 
-The image contains `bash`, `make`, `python3` and `docker-compose`.
+The image contains `bash`, `make`, `python3`, `jq` and `docker-compose`.

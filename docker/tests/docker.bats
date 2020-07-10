@@ -8,5 +8,5 @@
     run docker run --rm "avenga/docker:$VERSION" -c 'docker --version'
     echo "$output"
     [[ $status -eq 0 ]]
-    [[ $output =~ version\ 19.03.8 ]]
+    [[ $output =~ version\ 19 ]]
 }
