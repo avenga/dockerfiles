@@ -2,7 +2,7 @@ ARG WORDPRESS_IMAGE_TAG=5-php7.3-apache
 FROM wordpress:${WORDPRESS_IMAGE_TAG} AS release
 
 # Add sudo in order to run wp-cli as the www-data user
-RUN apt-get update && apt-get install -y sudo less
+RUN apt-get update -y -qqqq && apt-get install -y sudo less
 
 # Add WP-CLI
 RUN curl -o /bin/wp-cli.phar https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar

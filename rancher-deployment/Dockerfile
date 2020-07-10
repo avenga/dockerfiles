@@ -28,7 +28,7 @@ ENV TEST_VOLUME_NAME=""
 VOLUME /environments
 WORKDIR /work
 RUN apk add --no-cache bash
-COPY --from=hairyhenderson/gomplate:v2.6.0-alpine /bin/gomplate /bin/gomplate
+COPY --from=hairyhenderson/gomplate:v3.5.0-alpine /bin/gomplate /bin/gomplate
 COPY entrypoint.sh setup-volumes.sh ./
 ENTRYPOINT ["/bin/bash", "/work/entrypoint.sh"]
 ONBUILD COPY ${DOCKER_COMPOSE_TEMPLATE_FILE} ./

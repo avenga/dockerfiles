@@ -1,2 +1,2 @@
 FROM avenga/sloppy-rollout:latest
-COPY sloppy.tmpl.yml ./
+COPY sloppy.yml.tpl ./

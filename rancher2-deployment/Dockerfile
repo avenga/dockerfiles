@@ -17,7 +17,7 @@ ENV NO_LOGIN=""
 # Used to mount build volumes in GitLab CI pipeline:
 ENV CI_PROJECT_DIR=""
 
-COPY --from=hairyhenderson/gomplate:alpine /bin/gomplate /bin/gomplate
+COPY --from=hairyhenderson/gomplate:v3.5.0-alpine /bin/gomplate /bin/gomplate
 
 RUN apk add --quiet --no-progress --no-cache bash curl \
     && curl -s -L -o /usr/local/bin/kubectl https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl \

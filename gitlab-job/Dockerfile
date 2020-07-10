@@ -1,7 +1,4 @@
-FROM docker:stable-git AS release
-
-COPY install_docker-compose.sh /tmp
-RUN apk add --quiet --no-progress --no-cache make python3 bash curl jq coreutils \
-    && sh /tmp/install_docker-compose.sh \
-    && rm /tmp/install_docker-compose.sh \
+FROM avenga/docker AS release
+RUN apk --quiet --no-progress --no-cache add make coreutils curl jq docker-compose \
     && sed -i 's|ash$|bash|g' /etc/passwd
+RUN docker-compose --version

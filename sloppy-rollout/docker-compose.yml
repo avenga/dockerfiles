@@ -7,7 +7,7 @@ services:
     environment:
       DRY_RUN: "true"
       SLOPPY_MODE: "template"
-      SLOPPY_CONFIG_FILE: "sloppy.tmpl.yml"
+      SLOPPY_CONFIG_FILE: "sloppy.yml.tpl"
       SLOPPY_ROLLOUT_TRACE: 1
       SLOPPY_SAVE_OUTPUT_DIR: /test-output
   file-test:

@@ -10,6 +10,7 @@ ENV SLOPPY_MODE=""
 VOLUME /environments
 WORKDIR /work
 RUN apk add --no-cache --quiet --no-progress bash
-COPY --from=hairyhenderson/gomplate:alpine /bin/gomplate /bin/gomplate
+COPY --from=hairyhenderson/gomplate:v3.5.0-alpine /bin/gomplate /bin/gomplate
 COPY entrypoint.sh ./
 ENTRYPOINT ["/bin/bash", "/work/entrypoint.sh"]
+
