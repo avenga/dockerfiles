@@ -1,6 +1,9 @@
 #!/bin/bash -eu
 
 IMAGES="${IMAGES:-}"
+DRY_RUN="${DRY_RUN:-}"
+CACHE="${CACHE:-}"
+NO_PULL="${NO_PULL:-}"
 
 if [[ -z $IMAGES ]] ; then
     IMAGES=$(git diff --name-only "$GIT_DIFF" | \
