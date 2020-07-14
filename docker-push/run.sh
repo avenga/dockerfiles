@@ -1,6 +1,9 @@
 #!/bin/bash -eu
 
+DRY_RUN="${DRY_RUN:-}"
 IMAGES="${IMAGES:-}"
+CI_REGISTRY="${CI_REGISTRY:-}"
+
 if [[ -z $IMAGES ]] ; then
     IMAGES=$(git diff --name-only "$GIT_DIFF" | \
         sort -u | \
