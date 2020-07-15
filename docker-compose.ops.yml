@@ -35,6 +35,7 @@ services:
       - DRY_RUN
       - CI_REGISTRY_PASSWORD
       - CI_REGISTRY_USER
+      - CI_REGISTRY
       - IMAGES
     volumes:
       - .:/work
