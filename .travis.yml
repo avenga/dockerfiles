@@ -24,7 +24,7 @@ before_script:
 
 script:
   - git show-ref
-  - VERSION="$(git show --quiet --format="%cd-%H" --date=short refs/heads/$BRANCH)"
+  - VERSION="${TRAVIS_COMMIT}"
   - export VERSION
   - echo "BRANCH=$BRANCH VERSION=$VERSION"
   # stop immediately if there's a failure
