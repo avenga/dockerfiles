@@ -37,6 +37,9 @@ ENV RANCHER_BEARER_TOKEN=""
 # Used to mount build volumes in GitLab CI pipeline:
 ENV CI_PROJECT_DIR=""
 
+# Set to anything but empty to not login to rancher:
+ENV NO_LOGIN=""
+
 # END mandatory variables
 ########################################################################
 
