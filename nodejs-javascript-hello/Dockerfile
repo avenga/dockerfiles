@@ -1,3 +1,4 @@
-ARG  IMAGE_PREFIX="avenga/"
-FROM ${IMAGE_PREFIX}nodejs-javascript-builder:latest AS build
-FROM ${IMAGE_PREFIX}nodejs-javascript-app:latest AS release
+ARG IMAGE_PREFIX="avenga/"
+ARG VERSION="latest"
+FROM ${IMAGE_PREFIX}nodejs-javascript-builder:${VERSION} AS build
+FROM ${IMAGE_PREFIX}nodejs-javascript-app:${VERSION} AS release

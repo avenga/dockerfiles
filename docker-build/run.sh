@@ -1,4 +1,5 @@
-#!/bin/bash -eu
+#!/usr/bin/env bash
+set -eu
 
 IMAGES="${IMAGES:-}"
 DRY_RUN="${DRY_RUN:-}"

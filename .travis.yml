@@ -19,21 +19,26 @@ before_script:
   - git remote set-branches --add origin master
   - git fetch
   # See issue: https://graysonkoonce.com/getting-the-current-branch-name-during-a-pull-request-in-travis-ci/
-  - export BRANCH=$(if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then echo $TRAVIS_BRANCH; else echo $TRAVIS_PULL_REQUEST_BRANCH; fi)
+  - BRANCH=$(if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then echo $TRAVIS_BRANCH; else echo $TRAVIS_PULL_REQUEST_BRANCH; fi)
+  - export BRANCH
 
 script:
+  - git show-ref
+  - VERSION="$(git show --quiet --format="%cd-%H" --date=short refs/heads/$BRANCH)"
+  - export VERSION
+  - echo "BRANCH=$BRANCH VERSION=$VERSION"
   # stop immediately if there's a failure
   - set -e
   # build docker images:
-  - make build -e IMAGE_PREFIX="docker.io/avenga/"
-  - make build -e IMAGE_PREFIX="docker.io/7val/"
+  - make build -e VERSION="$VERSION" -e IMAGE_PREFIX="docker.io/avenga/"
+  - make build -e VERSION="$VERSION" -e IMAGE_PREFIX="docker.io/7val/"
   # run tests when available
   - make test
   # push docker images to registry if master branch:
-  - make push -e CURRENT_BRANCH="$BRANCH" -e ONLY_BRANCH="master" -e IMAGE_PREFIX="docker.io/avenga/"
-  - make push -e CURRENT_BRANCH="$BRANCH" -e ONLY_BRANCH="master" -e IMAGE_PREFIX="docker.io/7val/"
+  - make push -e VERSION="$VERSION" -e CURRENT_BRANCH="$BRANCH" -e ONLY_BRANCH="master" -e IMAGE_PREFIX="docker.io/avenga/"
+  - make push -e VERSION="$VERSION" -e CURRENT_BRANCH="$BRANCH" -e ONLY_BRANCH="master" -e IMAGE_PREFIX="docker.io/7val/"
   - > 
     if [ "$TRAVIS_EVENT_TYPE" == "cron" ]; then 
-    make build-all test-all push-all -e CURRENT_BRANCH="$BRANCH" -e ONLY_BRANCH="master" -e IMAGE_PREFIX="docker.io/avenga/";
-    make build-all test-all push-all -e CURRENT_BRANCH="$BRANCH" -e ONLY_BRANCH="master" -e IMAGE_PREFIX="docker.io/7val/";
+    make build-all test-all push-all -e VERSION="$VERSION" -e CURRENT_BRANCH="$BRANCH" -e ONLY_BRANCH="master" -e IMAGE_PREFIX="docker.io/avenga/";
+    make build-all test-all push-all -e VERSION="$VERSION" -e CURRENT_BRANCH="$BRANCH" -e ONLY_BRANCH="master" -e IMAGE_PREFIX="docker.io/7val/";
     fi

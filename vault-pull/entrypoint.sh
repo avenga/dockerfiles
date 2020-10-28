@@ -1,4 +1,5 @@
-#!/bin/bash -eu
+#!/usr/bin/env bash
+set -eu
 
 ENVIRONMENTS=$(vault list -format=json "$VAULT_SECRETS_PATH/$PROJECT/environments" | jq -r 'join(",")')
 

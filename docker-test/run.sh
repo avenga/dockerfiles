@@ -1,5 +1,4 @@
-#!/bin/bash
-
+#!/usr/bin/env bash
 set -euo pipefail
 
 CHANGES=$(git diff --name-only "$GIT_DIFF" | \
