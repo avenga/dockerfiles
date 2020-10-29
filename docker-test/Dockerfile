@@ -1,4 +1,6 @@
-FROM avenga/docker AS release
+ARG IMAGE_PREFIX="avenga/"
+ARG VERSION="latest"
+FROM ${IMAGE_PREFIX}docker:${VERSION} AS release
 
 # Install bats-core and other requirements
 COPY --from=bats/bats:latest /opt/bats /opt/bats

@@ -1,4 +1,5 @@
-#!/bin/bash -eu
+#!/usr/bin/env bash
+set -eu
 
 ENVIRONMENTS_PATH=/environments
 ENVIRONMENTS=$(find $ENVIRONMENTS_PATH/* -type d -maxdepth 1 -print0 | xargs -0 -n 1 basename)

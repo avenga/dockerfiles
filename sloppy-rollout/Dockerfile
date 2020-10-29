@@ -1,4 +1,6 @@
-FROM avenga/sloppy as release
+ARG IMAGE_PREFIX="avenga/"
+ARG VERSION="latest"
+FROM ${IMAGE_PREFIX}sloppy:${VERSION} AS release
 ENV SLOPPY_APITOKEN=""
 # If templating is used, files from this environment are used.
 ENV TEMPLATE_ENVIRONMENT=""
