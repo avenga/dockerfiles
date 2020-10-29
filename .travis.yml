@@ -21,8 +21,15 @@ before_script:
   # See issue: https://graysonkoonce.com/getting-the-current-branch-name-during-a-pull-request-in-travis-ci/
   - BRANCH=$(if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then echo $TRAVIS_BRANCH; else echo $TRAVIS_PULL_REQUEST_BRANCH; fi)
   - export BRANCH
+  # commit hashes as tags is broken, use something reliable
   - export VERSION="${TRAVIS_COMMIT}"
+  # always build everything locally
   - export PULL_FLAG=""
+  # it's okay to use the cache
+  - export CACHE_FLAG=""
+  # always bind all images, so that all images get synchronzide versions
+  - IMAGES="$(find * -maxdepth 0 -type d)"
+  - export IMAGES
 
 script:
   # stop immediately if there's a failure
