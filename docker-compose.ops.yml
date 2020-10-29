@@ -37,6 +37,7 @@ services:
       - CI_REGISTRY_USER
       - CI_REGISTRY
       - IMAGES
+      - VERSION
     volumes:
       - .:/work
       - /var/run/docker.sock:/var/run/docker.sock
