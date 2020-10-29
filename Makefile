@@ -23,6 +23,7 @@ help:
 
 # TODO Add make traps for docker-compose
 
+.PHONY: build
 build:  ## Builds all changed images. `-e IMAGES="name"` builds single image.
 	@docker-compose -f docker-compose.ops.yml build \
 		${CACHE_FLAG} \
@@ -52,6 +53,7 @@ test: ## Tests all changed images where tests exist. `-e IMAGES="name"` runs tes
 		test-images || make clean
 	@make clean
 
+.PHONY: push
 push: ## Pushes all changed images. `-e IMAGES="name"` pushes a single image.
 	@docker-compose -f docker-compose.ops.yml build \
 		${CACHE_FLAG} \

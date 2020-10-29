@@ -1,14 +1,16 @@
+ARG IMAGE_PREFIX="avenga/"
+ARG VERSION="latest"
+
 FROM koalaman/shellcheck-alpine:v0.6.0 as test
 COPY *.sh ./
 RUN find . -name "*.sh" | xargs shellcheck
 
-FROM avenga/docker AS release
+FROM ${IMAGE_PREFIX}docker:${VERSION} AS release
 #
 # DEFAULTS
 #
 ENV IMAGE_PREFIX=""
 ENV IMAGES=""
-ENV IMAGE_TAG="latest"
 ENV TARGET="release"
 ENV LABEL_VENDOR=""
 ENV LABEL_VCS_URL=""

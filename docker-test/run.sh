@@ -1,5 +1,4 @@
-#!/bin/bash
-
+#!/usr/bin/env bash
 set -euo pipefail
 
 CHANGES=$(git diff --name-only "$GIT_DIFF" | \
@@ -15,17 +14,19 @@ if [[ -z $IMAGES ]] ; then
     exit 0
 fi
 
-while IFS= read -r IMAGE_NAME
-do
-    ( cd "$IMAGE_NAME"
-    if [[ -d ./tests ]] ; then
-        echo "Running test for $IMAGE_NAME"
-        if [[ -f tests/test.sh ]] ; then
-            ./tests/test.sh
-        else
-            bats --tap ./tests
-        fi
+# for all images
+for image in $IMAGES; do
+    if [[ ! -d "$image/tests" ]] ; then
+        echo "No tests found for $image"
+        continue
+    fi
+    
+    echo "Running test for $image"
+    pushd "$image"
+    if [[ -f tests/test.sh ]] ; then
+        ./tests/test.sh
     else
-        echo "No tests found for $IMAGE_NAME"
-    fi )
-done < <(echo "$IMAGES" | tr " " "\n")
+        bats --tap ./tests
+    fi
+    popd
+done

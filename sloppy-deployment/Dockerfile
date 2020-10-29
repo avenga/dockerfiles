@@ -1,4 +1,5 @@
-FROM avenga/sloppy:1.13.1 as release
+ARG IMAGE_PREFIX="avenga/"
+FROM ${IMAGE_PREFIX}sloppy:1.13.1 as release
 ARG SLOPPY_TEMPLATE_FILE="sloppy.tmpl.yml"
 ENV SLOPPY_TEMPLATE_FILE=${SLOPPY_TEMPLATE_FILE}
 ENV SLOPPY_APITOKEN=""
