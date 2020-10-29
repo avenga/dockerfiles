@@ -33,7 +33,7 @@ script:
   - make build -e IMAGE_PREFIX="docker.io/avenga/"
   - make build -e IMAGE_PREFIX="docker.io/7val/"
   # run tests when available
-  # - make test
+  - make test
   # push docker images to registry if master branch:
   - make push -e CURRENT_BRANCH="$BRANCH" -e ONLY_BRANCH="master" -e IMAGE_PREFIX="docker.io/avenga/"
   - make push -e CURRENT_BRANCH="$BRANCH" -e ONLY_BRANCH="master" -e IMAGE_PREFIX="docker.io/7val/"
