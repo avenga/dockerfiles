@@ -21,12 +21,10 @@ before_script:
   # See issue: https://graysonkoonce.com/getting-the-current-branch-name-during-a-pull-request-in-travis-ci/
   - BRANCH=$(if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then echo $TRAVIS_BRANCH; else echo $TRAVIS_PULL_REQUEST_BRANCH; fi)
   - export BRANCH
+  - export VERSION="${TRAVIS_COMMIT}"
+  - export PULL_FLAG=""
 
 script:
-  - git show-ref
-  - VERSION="${TRAVIS_COMMIT}"
-  - export VERSION
-  - echo "BRANCH=$BRANCH VERSION=$VERSION"
   # stop immediately if there's a failure
   - set -e
   # build docker images:

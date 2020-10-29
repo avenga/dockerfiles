@@ -33,28 +33,23 @@ else
         then
             DOCKERFILE="$WORKDIR/$IMAGE_NAME/Dockerfile"
             CONTEXT="$WORKDIR/$IMAGE_NAME"
-            TAG=$IMAGE_PREFIX$IMAGE_NAME:$IMAGE_TAG
-            COMMIT_TAG=$IMAGE_PREFIX$IMAGE_NAME:$VERSION
             DOCKERFILE_FLAG=""
-            if [ -e "$DOCKERFILE" ]
-            then
+            if [ -e "$DOCKERFILE" ]; then
                 DOCKERFILE_FLAG="--file $DOCKERFILE"
             fi
             CACHE_FLAG="--no-cache"
-            if [[ -n "$CACHE" ]]
-            then
+            if [[ -n "$CACHE" ]]; then
                 CACHE_FLAG=""
             fi
             PULL_FLAG="--pull"
-            if [[ -n "$NO_PULL" ]]
-            then
+            if [[ -n "$NO_PULL" ]]; then
                 PULL_FLAG=""
             fi
 
             COMMAND="docker build $PULL_FLAG $CACHE_FLAG \\
             --build-arg IMAGE_PREFIX=$IMAGE_PREFIX \\
-            --tag $TAG \\
-            --tag $COMMIT_TAG \\
+            --tag $IMAGE_PREFIX$IMAGE_NAME:latest \\
+            --tag $IMAGE_PREFIX$IMAGE_NAME:$VERSION \\
             --target $TARGET \\
             --label org.opencontainers.image.created=\"$BUILD_DATE\" \\
             --label org.opencontainers.image.revision=\"$VERSION\" \\

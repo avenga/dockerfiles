@@ -18,7 +18,9 @@ if [[ -z $IMAGES ]]; then
     exit 0
 fi
 
-if [[ -n "$DRY_RUN" ]]; then
+# only push images if specific branch and not dry run
+if [[ -n "$DRY_RUN" ]] || [[ "$CURRENT_BRANCH" != "$ONLY_BRANCH" ]]; then
+    [[ "$CURRENT_BRANCH" != "$ONLY_BRANCH" ]] && echo "Skipping push since CURRENT_BRANCH $CURRENT_BRANCH is not equal to ONLY_BRANCH $ONLY_BRANCH"
     # for all images
     for image in $IMAGES; do
         # for all tags that are equal to latest
@@ -29,12 +31,7 @@ if [[ -n "$DRY_RUN" ]]; then
     done
     exit 0
 fi
-
-# only push images if specific branch
-if [[ "$CURRENT_BRANCH" != "$ONLY_BRANCH" ]]; then
-    echo "Skipping since not on ONLY_BRANCH $ONLY_BRANCH"
-    exit 0
-fi
+  
 
 echo "$CI_REGISTRY_PASSWORD" | docker login -u "$CI_REGISTRY_USER" "$CI_REGISTRY" --password-stdin
 
