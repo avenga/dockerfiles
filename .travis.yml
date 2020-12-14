@@ -21,8 +21,13 @@ before_script:
   # See issue: https://graysonkoonce.com/getting-the-current-branch-name-during-a-pull-request-in-travis-ci/
   - BRANCH=$(if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then echo $TRAVIS_BRANCH; else echo $TRAVIS_PULL_REQUEST_BRANCH; fi)
   - export BRANCH
-  # commit hashes as tags is broken, use something reliable
-  - export VERSION="${TRAVIS_COMMIT}"
+  
+  # commit hashes as tags is broken in merge requests, use something reliable
+  - >
+    if [ "$TRAVIS_PULL_REQUEST" == "true" ]; then
+      VERSION="$(git show --quiet --format="%cd" --date=short)-${TRAVIS_COMMIT}"
+      export VERSION
+    fi
   # always build everything locally
   - export PULL_FLAG=""
   # it's okay to use the cache
@@ -44,6 +49,6 @@ script:
   - make push -e CURRENT_BRANCH="$BRANCH" -e ONLY_BRANCH="master" -e IMAGE_PREFIX="docker.io/7val/"
   - > 
     if [ "$TRAVIS_EVENT_TYPE" == "cron" ]; then 
-    make build-all test-all push-all -e CURRENT_BRANCH="$BRANCH" -e ONLY_BRANCH="master" -e IMAGE_PREFIX="docker.io/avenga/";
-    make build-all test-all push-all -e CURRENT_BRANCH="$BRANCH" -e ONLY_BRANCH="master" -e IMAGE_PREFIX="docker.io/7val/";
+      make build-all test-all push-all -e CURRENT_BRANCH="$BRANCH" -e ONLY_BRANCH="master" -e IMAGE_PREFIX="docker.io/avenga/";
+      make build-all test-all push-all -e CURRENT_BRANCH="$BRANCH" -e ONLY_BRANCH="master" -e IMAGE_PREFIX="docker.io/7val/";
     fi
