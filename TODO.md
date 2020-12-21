@@ -7,18 +7,3 @@
 // !!!! make `--pull` the default in `docker-build/run.sh`
 * gitlab-job might use avenga/docker as base
 * some tests build the images by themselves
-
-
-FAILURE!?
-https://travis-ci.org/sevenval/dockerfiles/jobs/605426043
-```
-$ make build
-
-fatal: ref HEAD is not a symbolic ref
-
-Building build-images
-```
-Vermutlich die Zeile
-```
-  7 CURRENT_BRANCH ?= $(shell git symbolic-ref --short HEAD)¬
-```

@@ -4,7 +4,7 @@
 
 CI_REGISTRY ?= docker.io
 IMAGE_PREFIX ?= $(CI_REGISTRY)/avenga/
-CURRENT_BRANCH ?= $(shell git symbolic-ref --short HEAD)
+CURRENT_BRANCH ?= $(shell git symbolic-ref --short HEAD 2>/dev/null || printf "${BRANCH-}")
 ONLY_BRANCH ?= master
 # needed to mount files inside a container started inside a container
 HOST_PATH=$(shell pwd)
